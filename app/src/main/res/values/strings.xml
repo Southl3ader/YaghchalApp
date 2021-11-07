@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">YaghJava</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_kitchen">Kitchen</string>
+    <string name="menu_search">Search</string>
+    <string name="menu_settings">Settings</string>
+
+</resources>

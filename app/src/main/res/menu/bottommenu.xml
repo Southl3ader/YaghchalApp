@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home"
+        android:title="@string/menu_home"
+        android:icon="@drawable/ic_fridge"/>
+    <item
+        android:id="@+id/kitchen"
+        android:title="@string/menu_kitchen"
+        android:icon="@drawable/ic_recipe"/>
+    <item
+        android:id="@+id/search"
+        android:title="@string/menu_search"
+        android:icon="@drawable/ic_search"/>
+    <item
+        android:id="@+id/settings"
+        android:title="@string/menu_settings"
+        android:icon="@drawable/ic_settings"/>
+</menu>
