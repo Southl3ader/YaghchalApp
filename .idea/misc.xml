@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidStudioProjects/Yaghchal/app/src/main/res/layout/activity_fridge.xml" value="0.2" />
+        <entry key="..\:/AndroidStudioProjects/Yaghchal/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Yaghchal/app/src/main/res/layout/recyclerview_items.xml" value="0.12771739130434784" />
+        <entry key="..\:/AndroidStudioProjects/Yaghchal/app/src/main/res/menu/bottommenu.xml" value="0.20416666666666666" />
         <entry key="..\:/AndroidStudioProjects/YaghchalApp/app/src/main/res/layout/activity_fridge.xml" value="0.15715579710144928" />
         <entry key="..\:/AndroidStudioProjects/YaghchalApp/app/src/main/res/layout/activity_main.xml" value="0.15715579710144928" />
         <entry key="..\:/AndroidStudioProjects/YaghchalApp/app/src/main/res/layout/recyclerview_items.xml" value="0.15715579710144928" />

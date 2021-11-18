@@ -2,7 +2,9 @@ package com.example.yaghjava;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -13,6 +15,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
     groceriesDA access = new groceriesDA(MainActivity.this);
@@ -24,8 +28,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btn.findViewById(R.id.button);
-        //btn.setOnClickListener();
         access.openDB();
         addVegetables();
         addDairies();
@@ -37,6 +39,25 @@ public class MainActivity extends AppCompatActivity {
         access.updateVegAttributes("Cheese",0,"27/2","27/4",null,"Dairy");
         List<groceriesModel> models = access.search("tom");
         access.closeDB();
+
+//        Timer T=new Timer();
+//        T.scheduleAtFixedRate(new TimerTask() {
+//            @Override
+//            public void run() {
+//                Intent intnt = new Intent(MainActivity.this, FridgeActivity.class);
+//                startActivity(intnt);
+//                finish();
+//            }
+//        }, 1000, 1000);
+        new CountDownTimer(2000, 1000) {
+            public void onTick(long millisUntilFinished) {
+        }
+        public void onFinish() {
+            Intent intnt = new Intent(MainActivity.this, FridgeActivity.class);
+                startActivity(intnt);
+                finish();
+            }
+        }.start();
     }
 
     //Add vegetables to database
