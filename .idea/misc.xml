@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidStudioProjects/YaghchalApp/app/src/main/res/layout/activity_fridge.xml" value="0.15715579710144928" />
+        <entry key="..\:/AndroidStudioProjects/YaghchalApp/app/src/main/res/layout/activity_main.xml" value="0.15715579710144928" />
+        <entry key="..\:/AndroidStudioProjects/YaghchalApp/app/src/main/res/layout/recyclerview_items.xml" value="0.15715579710144928" />
         <entry key="..\:/Codes/Yaghchal/app/src/main/res/drawable/ic_fridge.xml" value="0.2703125" />
         <entry key="..\:/Codes/Yaghchal/app/src/main/res/drawable/ic_recipe.xml" value="0.2703125" />
         <entry key="..\:/Codes/Yaghchal/app/src/main/res/drawable/ic_search.xml" value="0.2703125" />
