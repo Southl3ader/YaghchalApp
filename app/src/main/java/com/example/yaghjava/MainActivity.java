@@ -22,8 +22,9 @@ public class MainActivity extends AppCompatActivity {
         access.openDB();
         addVegetables();
         addDairies();
+        addProtein();
 //        access.updateVegAttributes("Tomato", 20, "27/9", "1/10");
-        access.defaultVeg("Tomato");
+        access.defaultGro("Tomato");
 
         access.updateVegAttributes("Tomato",0,"27/2","27/4",null,"Veg");
         access.updateVegAttributes("Cheese",0,"27/2","27/4",null,"Dairy");
@@ -46,6 +47,25 @@ public class MainActivity extends AppCompatActivity {
 
         access.insert("Milk", "Dairy");
         access.insert("Cheese", "Dairy");
+
+
+
+    }
+    //Add Protein to database
+    public void addProtein(){
+
+        access.insert("Egg", "Protein");
+        access.insert("Red Meat", "Protein");
+
+
+
+    }
+
+    //Add Cereals to database
+    public void addCereal(){
+
+        access.insert("Bread", "Cereal");
+        access.insert("Rice", "Cereal");
 
 
 

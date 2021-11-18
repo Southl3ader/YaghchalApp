@@ -55,13 +55,14 @@ public class groceriesDA {
         database.execSQL(upQuery);
     }
 
-    //Set a vegetable as default
-    public void defaultVeg(String name){
+    //Set as default
+    public void defaultGro(String name){
         String upQuery = "update " + SqliteDB.TABLE_GROCERIES
                 + " set " + SqliteDB.AMOUNT + " = " + 0 + " , "
                 + SqliteDB.BUY_DATE + " = " + "'" + null + "'" + " , "
-                + SqliteDB.EXPIRE_DATE + " = " + "'" + null + "'"
-                + " where " + SqliteDB.NAME + " = " + "'" + name + "'" + " and " + SqliteDB.TYPE + " = " + "'" + "Veg" + "'";
+                + SqliteDB.EXPIRE_DATE + " = " + "'" + null + "'"+ " , "
+                + SqliteDB.COMPANY + " = " + "'" + null + "'"
+                + " where " + SqliteDB.NAME + " = " + "'" + name + "'";
 
         database.execSQL(upQuery);
     }
@@ -72,6 +73,75 @@ public class groceriesDA {
         List<groceriesModel> models = new ArrayList<>();
         String getAllVegQuery = "select * from " + SqliteDB.TABLE_GROCERIES
                 + " where " + SqliteDB.TYPE + " = " + "'" + "Veg" + "'";
+
+        Cursor cursor = database.rawQuery(getAllVegQuery, null);
+        if (cursor.moveToFirst()){
+            do {
+                String name = cursor.getString(0);
+                int amount = cursor.getInt(1);
+                String buy = cursor.getString(2);
+                String expire = cursor.getString(3);
+                String company = cursor.getString(4);
+                String type = cursor.getString(5);
+
+                models.add(new groceriesModel(name , amount , buy , expire , company , type));
+            }while (cursor.moveToNext());
+        }
+        return models;
+    }
+
+    //get all Dairies
+    public List<groceriesModel> getAllDairies(){
+
+        List<groceriesModel> models = new ArrayList<>();
+        String getAllVegQuery = "select * from " + SqliteDB.TABLE_GROCERIES
+                + " where " + SqliteDB.TYPE + " = " + "'" + "Dairy" + "'";
+
+        Cursor cursor = database.rawQuery(getAllVegQuery, null);
+        if (cursor.moveToFirst()){
+            do {
+                String name = cursor.getString(0);
+                int amount = cursor.getInt(1);
+                String buy = cursor.getString(2);
+                String expire = cursor.getString(3);
+                String company = cursor.getString(4);
+                String type = cursor.getString(5);
+
+                models.add(new groceriesModel(name , amount , buy , expire , company , type));
+            }while (cursor.moveToNext());
+        }
+        return models;
+    }
+
+    //get all Proteins
+    public List<groceriesModel> getAllProteins(){
+
+        List<groceriesModel> models = new ArrayList<>();
+        String getAllVegQuery = "select * from " + SqliteDB.TABLE_GROCERIES
+                + " where " + SqliteDB.TYPE + " = " + "'" + "Protein" + "'";
+
+        Cursor cursor = database.rawQuery(getAllVegQuery, null);
+        if (cursor.moveToFirst()){
+            do {
+                String name = cursor.getString(0);
+                int amount = cursor.getInt(1);
+                String buy = cursor.getString(2);
+                String expire = cursor.getString(3);
+                String company = cursor.getString(4);
+                String type = cursor.getString(5);
+
+                models.add(new groceriesModel(name , amount , buy , expire , company , type));
+            }while (cursor.moveToNext());
+        }
+        return models;
+    }
+
+    //get all Cereals
+    public List<groceriesModel> getAllCereals(){
+
+        List<groceriesModel> models = new ArrayList<>();
+        String getAllVegQuery = "select * from " + SqliteDB.TABLE_GROCERIES
+                + " where " + SqliteDB.TYPE + " = " + "'" + "Cereal" + "'";
 
         Cursor cursor = database.rawQuery(getAllVegQuery, null);
         if (cursor.moveToFirst()){
