@@ -7,10 +7,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.widget.ImageView;
 
+import com.example.yaghjava.dataBase.groceriesDA;
+import com.example.yaghjava.model.groceriesModel;
+
 import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FridgeActivity extends AppCompatActivity {
-
+    groceriesDA access = new groceriesDA(this);
     ImageView cabbage;
 
     @Override
@@ -20,9 +25,15 @@ public class FridgeActivity extends AppCompatActivity {
 
 //        cabbage.findViewById(R.id.cabbage);
 //        cabbage.setBackgroundResource(R.drawable.cabbage);
+        access.openDB();
 
-        String[] data = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48"};
-        // String[] array = new String[48];
+        ArrayList<groceriesModel> Veg = (ArrayList<groceriesModel>) access.getAllVeg();
+        access.closeDB();
+        String[] data = new String[Veg.size()];
+        for (int i = 0;i < Veg.size();i++){
+            data[i] = Veg.get(i).getName();
+        }
+
         // set up the RecyclerView
         RecyclerView recyclerView = findViewById(R.id.items);
         int numberOfColumns = 4;

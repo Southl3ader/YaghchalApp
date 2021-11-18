@@ -72,7 +72,7 @@ public class groceriesDA {
 
         List<groceriesModel> models = new ArrayList<>();
         String getAllVegQuery = "select * from " + SqliteDB.TABLE_GROCERIES
-                + " where " + SqliteDB.TYPE + " = " + "'" + "Veg" + "'";
+                + " where " + SqliteDB.TYPE + " = " + "'" + "Veg" + "'" + " and " + SqliteDB.AMOUNT + " >= " + 1;
 
         Cursor cursor = database.rawQuery(getAllVegQuery, null);
         if (cursor.moveToFirst()){
@@ -95,7 +95,7 @@ public class groceriesDA {
 
         List<groceriesModel> models = new ArrayList<>();
         String getAllVegQuery = "select * from " + SqliteDB.TABLE_GROCERIES
-                + " where " + SqliteDB.TYPE + " = " + "'" + "Dairy" + "'";
+                + " where " + SqliteDB.TYPE + " = " + "'" + "Dairy" + "'" + " and " + SqliteDB.AMOUNT + " >= " + 1;
 
         Cursor cursor = database.rawQuery(getAllVegQuery, null);
         if (cursor.moveToFirst()){
@@ -118,7 +118,7 @@ public class groceriesDA {
 
         List<groceriesModel> models = new ArrayList<>();
         String getAllVegQuery = "select * from " + SqliteDB.TABLE_GROCERIES
-                + " where " + SqliteDB.TYPE + " = " + "'" + "Protein" + "'";
+                + " where " + SqliteDB.TYPE + " = " + "'" + "Protein" + "'" + " and " + SqliteDB.AMOUNT + " >= " + 1;
 
         Cursor cursor = database.rawQuery(getAllVegQuery, null);
         if (cursor.moveToFirst()){
@@ -141,7 +141,7 @@ public class groceriesDA {
 
         List<groceriesModel> models = new ArrayList<>();
         String getAllVegQuery = "select * from " + SqliteDB.TABLE_GROCERIES
-                + " where " + SqliteDB.TYPE + " = " + "'" + "Cereal" + "'";
+                + " where " + SqliteDB.TYPE + " = " + "'" + "Cereal" + "'" + " and " + SqliteDB.AMOUNT + " >= " + 1;
 
         Cursor cursor = database.rawQuery(getAllVegQuery, null);
         if (cursor.moveToFirst()){
@@ -182,6 +182,25 @@ public class groceriesDA {
         }
         return models;
     }
+//    public groceriesModel search(String input){
+//        if (input == null)
+//            input = "";
+//        String getAllVegQuery = "select * from " + SqliteDB.TABLE_GROCERIES
+//                + " where " + SqliteDB.NAME + " like '" + input + "%'";
+//
+//        Cursor cursor = database.rawQuery(getAllVegQuery, null);
+//        if (cursor.moveToFirst()) {
+//            String name = cursor.getString(0);
+//            int amount = cursor.getInt(1);
+//            String buy = cursor.getString(2);
+//            String expire = cursor.getString(3);
+//            String company = cursor.getString(4);
+//            String type = cursor.getString(5);
+//
+//            return new groceriesModel(name, amount, buy, expire, company, type);
+//
+//        }else return null;
+//    }
 
     //Get all groceries
     public List<groceriesModel> getAllGro(){
