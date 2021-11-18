@@ -42,5 +42,6 @@ public class FridgeActivity extends AppCompatActivity {
         RecyclerViewAdapter  adapter = new RecyclerViewAdapter(this, data);
         //adapter.setClickListener((RecyclerViewAdapter.ItemClickListener) this);
         recyclerView.setAdapter(adapter);
+        //g
     }
 }
