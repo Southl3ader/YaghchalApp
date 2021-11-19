@@ -5,26 +5,34 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-
+import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.yaghjava.dataBase.groceriesDA;
 import com.example.yaghjava.model.groceriesModel;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-
-
+import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
     groceriesDA access = new groceriesDA(MainActivity.this);
 
+    Button btn;
+    ImageView img;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        img = findViewById(R.id.logo);
+
+        img.setBackgroundResource(R.drawable.ic_fridge);
 
         access.openDB();
         addVegetables();
@@ -38,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
         access.updateVegAttributes("Cheese",0,"27/2","27/4",null,"Dairy");
         access.search("tom");
         access.closeDB();
-
 
         new CountDownTimer(2000, 1000) {
             public void onTick(long millisUntilFinished) {
@@ -60,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
     //Add dairies to database
     public void addDairies(){
 
@@ -78,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
     //Add Cereals to database
     public void addCereal(){
 

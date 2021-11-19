@@ -6,16 +6,17 @@
     android:padding="10dp">
 
     <TextView
-        android:id="@+id/veg"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="#ff9999"/>
-<!--        style="@style/itesmStyle"-->
-        />
+        android:id="@+id/groceries"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@drawable/frame"
+        android:gravity="bottom"
+        android:textColor="#000"/>
 
-<!--    <ImageView-->
-<!--        android:id="@+id/cabbage"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"/>-->
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="10dp"/>
 
 </LinearLayout>

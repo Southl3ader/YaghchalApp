@@ -20,4 +20,19 @@
         <item name="android:drawableStart">@drawable/ic_stove</item>
         <item name="android:padding">30dp</item>
     </style>
+
+    <style name="deleteItems" parent="android:Theme">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/search_box</item>
+        <item name="android:drawableLeft">@drawable/ic_trash</item>
+        <item name="android:text">"Delete"</item>
+        <item name="android:textColor">#000</item>
+    </style>
+
+    <style name="image" parent="android:Theme">
+        <item name="android:background">@drawable/frame</item>
+        <item name="android:drawableTop">@drawable/tomato</item>
+        <item name="android:textColor">#000</item>
+    </style>
 </resources>
