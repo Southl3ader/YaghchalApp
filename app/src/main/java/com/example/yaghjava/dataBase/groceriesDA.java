@@ -43,6 +43,15 @@ public class groceriesDA {
         database.execSQL(addQuery);
     }
 
+    //add grocery to fridge
+    public void addToFridge(String input){
+        String query = "update " + SqliteDB.TABLE_GROCERIES
+                + " set " + SqliteDB.AMOUNT + " = " + 1 + " , "
+                + " where " + SqliteDB.NAME + " = " + "'" + input + "'";
+
+        database.execSQL(query);
+    }
+
     //update Vegetables details
     public void updateVegAttributes(String name , int amount, String BDate, String ExDate, String company, String type){
         String upQuery = "update " + SqliteDB.TABLE_GROCERIES
