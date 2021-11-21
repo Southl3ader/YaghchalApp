@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -24,15 +25,15 @@ public class FridgeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fridge);
 
-        imageView = findViewById(R.id.img);
-        //imageView.setBackgroundResource(R.drawable.tomato);
-
         access.openDB();
 
         ArrayList<groceriesModel> Veg = (ArrayList<groceriesModel>) access.getAllVeg();
         String[] vegetables = new String[Veg.size()];
+        Bitmap[] vegImage = new Bitmap[Veg.size()];
+
         for (int i = 0;i < Veg.size();i++){
             vegetables[i] = Veg.get(i).getName();
+            vegImage[i] = Veg.get(i).getImage();
         }
 
         ArrayList<groceriesModel> Dair = (ArrayList<groceriesModel>) access.getAllDairies();

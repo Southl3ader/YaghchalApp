@@ -1,21 +1,24 @@
 package com.example.yaghjava.model;
 
 
-import androidx.annotation.Nullable;
+import android.graphics.Bitmap;
 
 public class groceriesModel {
     private String name;
     private int amount;
     private String buy, expire, company , type;
+    private Bitmap image;
 
-    public groceriesModel(String name, int amount, String buy, String expire, String company, String type) {
+    public groceriesModel(String name, int amount, String buy, String expire, String company, String type, Bitmap image) {
         this.name = name;
         this.amount = amount;
         this.buy = buy;
         this.expire = expire;
         this.company = company;
         this.type = type;
+        this.image = image;
     }
+
 
     public String getName() {
         return name;
@@ -63,6 +66,14 @@ public class groceriesModel {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public Bitmap getImage() {
+        return image;
+    }
+
+    public void setImage(Bitmap image) {
+        this.image = image;
     }
 }
 

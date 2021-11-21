@@ -13,7 +13,7 @@ import java.util.Date;
 public class SqliteDB extends SQLiteOpenHelper {
 
     public static final String DB_NAME = "yaghchal.db";
-    public static final int DB_Version = 4;
+    public static final int DB_Version = 7;
 
     //table
     public static final String TABLE_GROCERIES = "groceries";
@@ -23,6 +23,7 @@ public class SqliteDB extends SQLiteOpenHelper {
     public static final String EXPIRE_DATE = "expire";
     public static final String COMPANY = "company";
     public static final String TYPE = "type";
+    public static final String IMAGE = "image";
 
 
 
@@ -38,7 +39,8 @@ public class SqliteDB extends SQLiteOpenHelper {
                 BUY_DATE + " TEXT NOT NULL , " +
                 EXPIRE_DATE + " TEXT , " +
                 COMPANY + " TEXT ," +
-                TYPE + " TEXT )";
+                TYPE + " TEXT ," +
+                IMAGE + " BLOB )";
 
         sqLiteDatabase.execSQL(query);
 //        insert(sqLiteDatabase,"Tomato","Veg");

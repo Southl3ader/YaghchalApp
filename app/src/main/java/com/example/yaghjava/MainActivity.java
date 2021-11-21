@@ -3,6 +3,8 @@ package com.example.yaghjava;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -14,6 +16,7 @@ import com.example.yaghjava.dataBase.groceriesDA;
 import com.example.yaghjava.model.groceriesModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
@@ -57,11 +60,19 @@ public class MainActivity extends AppCompatActivity {
             }
         }.start();
     }
+    //Image to byte
+    public byte[] imageToBytes (Bitmap bitmap){
+        ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG,100, byteArray);
+        byte[] img = byteArray.toByteArray();
+        return img;
+
+    }
 
     //Add vegetables to database
     public void addVegetables(){
-        access.insert("Tomato", "Veg");
-        access.insert("Cucumber", "Veg");
+        access.insert("Tomato", "Veg", imageToBytes(BitmapFactory.decodeResource(getResources(),R.drawable.tomato)));
+//        access.insert("Cucumber", "Veg");
 
         access.getAllVeg();
 
@@ -71,8 +82,8 @@ public class MainActivity extends AppCompatActivity {
     //Add dairies to database
     public void addDairies(){
 
-        access.insert("Milk", "Dairy");
-        access.insert("Cheese", "Dairy");
+//        access.insert("Milk", "Dairy");
+//        access.insert("Cheese", "Dairy");
 
 
 
@@ -80,8 +91,8 @@ public class MainActivity extends AppCompatActivity {
     //Add Protein to database
     public void addProtein(){
 
-        access.insert("Egg", "Protein");
-        access.insert("Red Meat", "Protein");
+//        access.insert("Egg", "Protein");
+//        access.insert("Red Meat", "Protein");
 
 
 
@@ -90,8 +101,8 @@ public class MainActivity extends AppCompatActivity {
     //Add Cereals to database
     public void addCereal(){
 
-        access.insert("Bread", "Cereal");
-        access.insert("Rice", "Cereal");
+//        access.insert("Bread", "Cereal");
+//        access.insert("Rice", "Cereal");
 
 
 

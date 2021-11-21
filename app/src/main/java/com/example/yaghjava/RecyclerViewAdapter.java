@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -39,6 +40,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.myTextView.setText(mData[position].toString());
+        holder.imageView.setBackgroundResource(R.drawable.tomato);
     }
 
     // total number of cells
@@ -51,10 +53,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView myTextView;
-
+        ImageView imageView;
         ViewHolder(View itemView) {
             super(itemView);
             myTextView = itemView.findViewById(R.id.groceries);
+            imageView = itemView.findViewById(R.id.img);
             //myTextView.setBackgroundResource(R.drawable.cabbage);
             itemView.setOnClickListener(this);
         }

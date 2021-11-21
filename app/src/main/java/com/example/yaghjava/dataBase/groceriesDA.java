@@ -2,13 +2,13 @@ package com.example.yaghjava.dataBase;
 
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
-
-import androidx.annotation.Nullable;
 
 import com.example.yaghjava.model.groceriesModel;
 
@@ -19,7 +19,7 @@ import java.util.List;
 public class groceriesDA {
     private SQLiteOpenHelper openHelper;
     private SQLiteDatabase database;
-    private String[] cls = {SqliteDB.NAME , SqliteDB.AMOUNT , SqliteDB.BUY_DATE , SqliteDB.EXPIRE_DATE , SqliteDB.COMPANY, SqliteDB.TYPE};
+    private String[] cls = {SqliteDB.NAME , SqliteDB.AMOUNT , SqliteDB.BUY_DATE , SqliteDB.EXPIRE_DATE , SqliteDB.COMPANY, SqliteDB.TYPE, SqliteDB.IMAGE};
 
     public groceriesDA(Activity context) {
         openHelper = new SqliteDB(context);
@@ -35,12 +35,22 @@ public class groceriesDA {
 
 
     //add grocery to table
-    public void insert(String name, String type){
+    public void insert(String name, String type, byte[] image){
        String addQuery = "insert into "+ SqliteDB.TABLE_GROCERIES + " (" + SqliteDB.NAME + " , " + SqliteDB.AMOUNT +" , " + SqliteDB.BUY_DATE + " , " + SqliteDB.EXPIRE_DATE + " , " + SqliteDB.COMPANY + " , " + SqliteDB.TYPE + ") "
                + "select " + "'" + name + "'" + " , " + 0 + " , " +  "'" + null + "'" + " , " +  "'" + null +  "'" + " , " + "'" + null + "'" + " , " + "'" + type + "'"
                + "where not exists ( select 1 from " + SqliteDB.TABLE_GROCERIES + " where " + SqliteDB.NAME + " = " + "'" + name + "'" + " and " + SqliteDB.TYPE + " = " + "'" + type + "'" + ")";
 
         database.execSQL(addQuery);
+        ContentValues cv = new ContentValues();
+//        cv.put(SqliteDB.NAME, name);
+//        cv.put(SqliteDB.AMOUNT,0);
+//        cv.put(SqliteDB.BUY_DATE,"");
+//        cv.put(SqliteDB.EXPIRE_DATE,"");
+//        cv.put(SqliteDB.COMPANY,"");
+//        cv.put(SqliteDB.TYPE,type);
+        cv.put(SqliteDB.IMAGE,image);
+
+        database.update(SqliteDB.TABLE_GROCERIES,cv,SqliteDB.NAME + " = '" + name + "'",null);
     }
 
     //add grocery to fridge
@@ -92,8 +102,11 @@ public class groceriesDA {
                 String expire = cursor.getString(3);
                 String company = cursor.getString(4);
                 String type = cursor.getString(5);
+                byte[] image = cursor.getBlob(6);
+                Bitmap bitmap = BitmapFactory.decodeByteArray(image,0,image.length);
 
-                models.add(new groceriesModel(name , amount , buy , expire , company , type));
+
+                models.add(new groceriesModel(name , amount , buy , expire , company , type, bitmap));
             }while (cursor.moveToNext());
         }
         return models;
@@ -115,8 +128,11 @@ public class groceriesDA {
                 String expire = cursor.getString(3);
                 String company = cursor.getString(4);
                 String type = cursor.getString(5);
+                byte[] image = cursor.getBlob(6);
+                Bitmap bitmap = BitmapFactory.decodeByteArray(image,0,image.length);
 
-                models.add(new groceriesModel(name , amount , buy , expire , company , type));
+
+                models.add(new groceriesModel(name , amount , buy , expire , company , type, bitmap));
             }while (cursor.moveToNext());
         }
         return models;
@@ -138,8 +154,11 @@ public class groceriesDA {
                 String expire = cursor.getString(3);
                 String company = cursor.getString(4);
                 String type = cursor.getString(5);
+                byte[] image = cursor.getBlob(6);
+                Bitmap bitmap = BitmapFactory.decodeByteArray(image,0,image.length);
 
-                models.add(new groceriesModel(name , amount , buy , expire , company , type));
+
+                models.add(new groceriesModel(name , amount , buy , expire , company , type, bitmap));
             }while (cursor.moveToNext());
         }
         return models;
@@ -161,8 +180,11 @@ public class groceriesDA {
                 String expire = cursor.getString(3);
                 String company = cursor.getString(4);
                 String type = cursor.getString(5);
+                byte[] image = cursor.getBlob(6);
+                Bitmap bitmap = BitmapFactory.decodeByteArray(image,0,image.length);
 
-                models.add(new groceriesModel(name , amount , buy , expire , company , type));
+
+                models.add(new groceriesModel(name , amount , buy , expire , company , type, bitmap));
             }while (cursor.moveToNext());
         }
         return models;
@@ -185,8 +207,11 @@ public class groceriesDA {
                 String expire = cursor.getString(3);
                 String company = cursor.getString(4);
                 String type = cursor.getString(5);
+                byte[] image = cursor.getBlob(6);
+                Bitmap bitmap = BitmapFactory.decodeByteArray(image,0,image.length);
 
-                models.add(new groceriesModel(name , amount , buy , expire , company , type));
+
+                models.add(new groceriesModel(name , amount , buy , expire , company , type, bitmap));
             }while (cursor.moveToNext());
         }
         return models;
@@ -226,11 +251,15 @@ public class groceriesDA {
                 String expire = cursor.getString(3);
                 String company = cursor.getString(4);
                 String type = cursor.getString(5);
+                byte[] image = cursor.getBlob(6);
+                Bitmap bitmap = BitmapFactory.decodeByteArray(image,0,image.length);
 
-                models.add(new groceriesModel(name , amount , buy , expire , company , type));
+
+                models.add(new groceriesModel(name , amount , buy , expire , company , type, bitmap));
             }while (cursor.moveToNext());
         }
         return models;
     }
+
 }
 
