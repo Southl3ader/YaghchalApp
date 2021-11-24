@@ -9,5 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="Primary">#FF76FFEA</color>
     <color name="PrimaryDark">#2EDDC1</color>
+    <color name="MenuDeselect">#DCDCDC</color>
+
 
 </resources>

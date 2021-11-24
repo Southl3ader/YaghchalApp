@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
+
+
+    </LinearLayout>
+
+<!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--        android:id="@+id/bottomnavigation"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="75dp"-->
+<!--        android:layout_gravity="bottom"-->
+<!--        android:layout_marginBottom="0dp"-->
+<!--        android:layout_marginStart="0dp"-->
+<!--        android:fitsSystemWindows="true"-->
+<!--        android:background="@drawable/roundmenu"-->
+<!--        app:itemIconTint="@color/menuiconcolor"-->
+<!--        app:itemTextColor="@color/menuiconcolor"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:menu="@menu/bottommenu"/>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/roundmenu"
+        android:backgroundTint="#A1a1a1"
+        android:gravity="bottom"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <Button
+            android:id="@+id/fridge"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:backgroundTint="#A1A1A1"
+            android:drawableTop="@drawable/ic_fridge"
+            android:drawableTint="@color/MenuDeselect"
+            android:hapticFeedbackEnabled="false"
+            android:padding="5dp"
+            android:text="Home"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/MenuDeselect"
+            app:cornerRadius="15dp"></Button>
+
+        <Button
+            android:id="@+id/recipe"
+
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:backgroundTint="#A1A1A1"
+            android:drawableTop="@drawable/ic_recipe"
+            android:drawableTint="@color/Primary"
+            android:padding="5dp"
+            android:text="Recipe"
+            android:textAllCaps="false"
+            android:textColor="@color/PrimaryDark"
+            app:cornerRadius="15dp"></Button>
+
+        <Button
+            android:id="@+id/settings"
+
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal|end"
+            android:layout_weight="1"
+            android:backgroundTint="#A1A1A1"
+            android:drawableTop="@drawable/ic_settings"
+            android:drawableTint="@color/MenuDeselect"
+            android:padding="5dp"
+            android:text="Settings"
+            android:textAllCaps="false"
+            android:textColor="@color/MenuDeselect"
+            app:cornerRadius="15dp"></Button>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

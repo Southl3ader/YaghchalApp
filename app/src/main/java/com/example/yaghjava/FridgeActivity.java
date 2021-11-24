@@ -4,8 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -75,6 +79,45 @@ public class FridgeActivity extends AppCompatActivity {
         recyclerViewProt.setAdapter(adapterProt);
         RecyclerViewAdapter  adapterCer = new RecyclerViewAdapter(this, cereals);
         recyclerViewCer.setAdapter(adapterCer);
+
+
+        //Bottom Menu OnClick Functions To Change Pages
+
+        Button button = (Button) findViewById(R.id.recipe);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(FridgeActivity.this, RecipeActivity.class);
+                startActivity(intent);
+                finish();
+                overridePendingTransition(0, 0);
+            }
+        });
+
+        Button button1 = (Button) findViewById(R.id.settings);
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(FridgeActivity.this, SettingsActivity.class);
+                startActivity(intent);
+                finish();
+                overridePendingTransition(0, 0);
+            }
+        });
+
+
+        //OnClick Function For SearchBar
+
+        EditText editText = (EditText) findViewById(R.id.searchbar);
+        editText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(FridgeActivity.this, SearchActivity.class);
+                startActivity(intent);
+                finish();
+                overridePendingTransition(0, 0);
+            }
+        });
 
     }
 }
