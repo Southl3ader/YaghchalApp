@@ -21,23 +21,19 @@
             android:padding="15dp"
             android:windowSoftInputMode="stateAlwaysVisible"/>
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/search"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="20dp" />
+
+        </ScrollView>
 
     </LinearLayout>
-
-<!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
-<!--        android:id="@+id/bottomnavigation"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="75dp"-->
-<!--        android:layout_gravity="bottom"-->
-<!--        android:layout_marginBottom="0dp"-->
-<!--        android:layout_marginStart="0dp"-->
-<!--        android:fitsSystemWindows="true"-->
-<!--        android:background="@drawable/roundmenu"-->
-<!--        app:itemIconTint="@color/menuiconcolor"-->
-<!--        app:itemTextColor="@color/menuiconcolor"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:menu="@menu/bottommenu"/>-->
-
-    /
 
 </androidx.constraintlayout.widget.ConstraintLayout>

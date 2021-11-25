@@ -1,6 +1,7 @@
 package com.example.yaghjava;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,20 +11,18 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.*;
-
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
+public class RecyclerViewItemsAdapter extends RecyclerView.Adapter<RecyclerViewItemsAdapter.ViewHolder> {
 
     private String[] mData;
-    private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
     Context cnt;
+    Bitmap[] pic;
 
     // data is passed into the constructor
-    RecyclerViewAdapter(Context context, String[] data) {
-        //this.mInflater = LayoutInflater.from(context);
+    RecyclerViewItemsAdapter(Context context, String[] data, Bitmap[] pic) {
         this.mData = data;
-        this.cnt = cnt;
+        this.cnt = context;
+        this.pic = pic;
     }
 
     // inflates the cell layout from xml when needed
@@ -32,7 +31,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         cnt = parent.getContext();
         View view= LayoutInflater.from(cnt).inflate(R.layout.recyclerview_items,parent,false);
-//        View view = mInflater.inflate(R.layout.recyclerview_items, parent, false);
         return new ViewHolder(view);
     }
 
@@ -40,7 +38,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.myTextView.setText(mData[position].toString());
-        holder.imageView.setBackgroundResource(R.drawable.tomato);
+        holder.imageView.setImageBitmap(pic[position]);
     }
 
     // total number of cells

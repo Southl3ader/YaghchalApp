@@ -11,14 +11,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.example.yaghjava.dataBase.groceriesDA;
 import com.example.yaghjava.model.groceriesModel;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
 
 public class FridgeActivity extends AppCompatActivity {
     groceriesDA access = new groceriesDA(this);
@@ -42,20 +39,32 @@ public class FridgeActivity extends AppCompatActivity {
 
         ArrayList<groceriesModel> Dair = (ArrayList<groceriesModel>) access.getAllDairies();
         String[] dairies = new String[Dair.size()];
+        Bitmap[] dairImage = new Bitmap[Veg.size()];
+
         for (int i = 0;i < Dair.size();i++){
             dairies[i] = Dair.get(i).getName();
+            dairImage[i] = Dair.get(i).getImage();
+
         }
 
         ArrayList<groceriesModel> Prot = (ArrayList<groceriesModel>) access.getAllProteins();
         String[] proteins = new String[Prot.size()];
+        Bitmap[] protImage = new Bitmap[Veg.size()];
+
         for (int i = 0;i < Prot.size();i++){
             proteins[i] = Prot.get(i).getName();
+            protImage[i] = Prot.get(i).getImage();
+
         }
 
         ArrayList<groceriesModel> Cer = (ArrayList<groceriesModel>) access.getAllCereals();
         String[] cereals = new String[Cer.size()];
+        Bitmap[] cerImage = new Bitmap[Veg.size()];
+
         for (int i = 0;i < Cer.size();i++){
             cereals[i] = Cer.get(i).getName();
+            cerImage[i] = Cer.get(i).getImage();
+
         }
         access.closeDB();
 
@@ -71,13 +80,13 @@ public class FridgeActivity extends AppCompatActivity {
         recyclerViewProt.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
         recyclerViewCer.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
 
-        RecyclerViewAdapter  adapterVeg = new RecyclerViewAdapter(this, vegetables);
+        RecyclerViewItemsAdapter adapterVeg = new RecyclerViewItemsAdapter(this, vegetables, vegImage);
         recyclerViewVeg.setAdapter(adapterVeg);
-        RecyclerViewAdapter  adapterDair = new RecyclerViewAdapter(this, dairies);
+        RecyclerViewItemsAdapter adapterDair = new RecyclerViewItemsAdapter(this, dairies, dairImage);
         recyclerViewDair.setAdapter(adapterDair);
-        RecyclerViewAdapter  adapterProt = new RecyclerViewAdapter(this, proteins);
+        RecyclerViewItemsAdapter adapterProt = new RecyclerViewItemsAdapter(this, proteins, protImage);
         recyclerViewProt.setAdapter(adapterProt);
-        RecyclerViewAdapter  adapterCer = new RecyclerViewAdapter(this, cereals);
+        RecyclerViewItemsAdapter adapterCer = new RecyclerViewItemsAdapter(this, cereals, cerImage);
         recyclerViewCer.setAdapter(adapterCer);
 
 

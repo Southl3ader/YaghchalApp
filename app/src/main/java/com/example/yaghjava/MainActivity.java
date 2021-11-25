@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         access.defaultGro("Tomato");
 
         access.updateVegAttributes("Tomato",1,"27/2","27/4",null,"Veg");
+        access.updateVegAttributes("Carrot",1,"27/2","27/4",null,"Veg");
         access.updateVegAttributes("Cheese",0,"27/2","27/4",null,"Dairy");
         access.search("tom");
         access.closeDB();
@@ -72,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
     //Add vegetables to database
     public void addVegetables(){
         access.insert("Tomato", "Veg", imageToBytes(BitmapFactory.decodeResource(getResources(),R.drawable.tomato)));
-//        access.insert("Cucumber", "Veg");
+        access.insert("Carrot", "Veg",imageToBytes(BitmapFactory.decodeResource(getResources(),R.drawable.carrot)));
 
         access.getAllVeg();
 
