@@ -1,5 +1,6 @@
 package com.example.yaghjava;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -22,17 +23,21 @@ import com.example.yaghjava.model.groceriesModel;
 import java.util.ArrayList;
 
 public class SearchActivity extends AppCompatActivity {
-
-    groceriesDA access = new groceriesDA(this);
+    public static Activity activity = SearchActivity.activity;
+    static groceriesDA access;
     EditText editText;
-    RecyclerViewSearchAdapter searchAdapter = new RecyclerViewSearchAdapter(this);
+    public static String input = new String();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
+        access = new groceriesDA(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_activity);
 
         editText = findViewById(R.id.searchbar);
+        RecyclerView recyclerViewSearch = findViewById(R.id.search);
+
+
         editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -46,7 +51,23 @@ public class SearchActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                search(editable.toString());
+                access.openDB();
+
+                ArrayList<groceriesModel> Search = (ArrayList<groceriesModel>) access.search(editable.toString());
+                String[] searchItems = new String[Search.size()];
+                if (editable.length() != 0) {
+                    for (int i = 0; i < Search.size(); i++) {
+                        searchItems[i] = Search.get(i).getName();
+                    }
+                    access.closeDB();
+                    System.out.println(searchItems.length);
+                    RecyclerViewSearchAdapter adapterSearch = new RecyclerViewSearchAdapter(getApplicationContext(), searchItems);
+                    int numberOfColumns = 1;
+                    recyclerViewSearch.setLayoutManager(new GridLayoutManager(getApplicationContext(), numberOfColumns));
+                    recyclerViewSearch.setAdapter(adapterSearch);
+
+                }
+
             }
         });
 
@@ -54,31 +75,32 @@ public class SearchActivity extends AppCompatActivity {
 
         EditText editText = (EditText) findViewById(R.id.searchbar);
         editText.requestFocus();
-
-        RecyclerView recyclerViewSearch = findViewById(R.id.search);
-
-        int numberOfColumns = 1;
-
-        recyclerViewSearch.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
-
-        //RecyclerViewSearchAdapter adapterSearch = new RecyclerViewSearchAdapter(this, searchItems);
+//        access.openDB();
+//        access.addToFridge(input);
+//        access.closeDB();
 
 
-    }
 
-    private void search(String text){
-        access.openDB();
 
-        ArrayList<groceriesModel> Search = (ArrayList<groceriesModel>) access.search(text);
-        String[] searchItems = new String[Search.size()];
-        for (int i = 0;i < Search.size();i++){
-            searchItems[i] = Search.get(i).getName();
-        }
 
-        access.closeDB();
-        searchAdapter.filter(searchItems);
+
+
 
     }
+
+//    private void search(String text){
+//        access.openDB();
+//
+//        ArrayList<groceriesModel> Search = (ArrayList<groceriesModel>) access.search(text);
+//        searchItems = new String[Search.size()];
+//        for (int i = 0;i < Search.size();i++){
+//            searchItems[i] = Search.get(i).getName();
+//        }
+//
+//        access.closeDB();
+//        searchAdapter.filter(searchItems);
+//
+//    }
 
     //Check For Back Button To Go Back To Main Page Not Close App
 

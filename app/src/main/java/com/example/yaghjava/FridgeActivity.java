@@ -1,9 +1,5 @@
 package com.example.yaghjava;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -11,6 +7,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.yaghjava.dataBase.groceriesDA;
 import com.example.yaghjava.model.groceriesModel;
@@ -36,6 +36,7 @@ public class FridgeActivity extends AppCompatActivity {
             vegetables[i] = Veg.get(i).getName();
             vegImage[i] = Veg.get(i).getImage();
         }
+
 
         ArrayList<groceriesModel> Dair = (ArrayList<groceriesModel>) access.getAllDairies();
         String[] dairies = new String[Dair.size()];

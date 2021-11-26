@@ -56,7 +56,7 @@ public class groceriesDA {
     //add grocery to fridge
     public void addToFridge(String input){
         String query = "update " + SqliteDB.TABLE_GROCERIES
-                + " set " + SqliteDB.AMOUNT + " = " + 1 + " , "
+                + " set " + SqliteDB.AMOUNT + " = " + 1
                 + " where " + SqliteDB.NAME + " = " + "'" + input + "'";
 
         database.execSQL(query);
