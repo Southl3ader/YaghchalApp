@@ -24,7 +24,6 @@ public class RecyclerViewSearchAdapter extends RecyclerView.Adapter<RecyclerView
 //    groceriesDA access;
 
 
-
     // data is passed into the constructor
     RecyclerViewSearchAdapter(Context context, String[] search) {
         this.cnt = context;
@@ -37,7 +36,7 @@ public class RecyclerViewSearchAdapter extends RecyclerView.Adapter<RecyclerView
     @NonNull
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         cnt = parent.getContext();
-        View view= LayoutInflater.from(cnt).inflate(R.layout.recyclerview_search,parent,false);
+        View view = LayoutInflater.from(cnt).inflate(R.layout.recyclerview_search, parent, false);
         return new ViewHolder(view);
 
     }
@@ -52,8 +51,6 @@ public class RecyclerViewSearchAdapter extends RecyclerView.Adapter<RecyclerView
                 SearchActivity.access.openDB();
                 SearchActivity.access.addToFridge(holder.myTextView.getText().toString());
                 SearchActivity.access.closeDB();
-
-
             }
         });
     }
@@ -70,6 +67,7 @@ public class RecyclerViewSearchAdapter extends RecyclerView.Adapter<RecyclerView
         TextView myTextView;
         ImageView imageView;
         LinearLayout linearLayout;
+
         ViewHolder(View itemView) {
             super(itemView);
             myTextView = itemView.findViewById(R.id.searchItems);
@@ -93,6 +91,7 @@ public class RecyclerViewSearchAdapter extends RecyclerView.Adapter<RecyclerView
     void setClickListener(ItemClickListener itemClickListener) {
         this.mClickListener = itemClickListener;
     }
+
 
     // parent activity will implement this method to respond to click events
     public interface ItemClickListener {
