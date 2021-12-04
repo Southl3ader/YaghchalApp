@@ -40,7 +40,7 @@ public class FridgeActivity extends AppCompatActivity {
 
         ArrayList<groceriesModel> Dair = (ArrayList<groceriesModel>) access.getAllDairies();
         String[] dairies = new String[Dair.size()];
-        Bitmap[] dairImage = new Bitmap[Veg.size()];
+        Bitmap[] dairImage = new Bitmap[Dair.size()];
 
         for (int i = 0;i < Dair.size();i++){
             dairies[i] = Dair.get(i).getName();
@@ -50,7 +50,7 @@ public class FridgeActivity extends AppCompatActivity {
 
         ArrayList<groceriesModel> Prot = (ArrayList<groceriesModel>) access.getAllProteins();
         String[] proteins = new String[Prot.size()];
-        Bitmap[] protImage = new Bitmap[Veg.size()];
+        Bitmap[] protImage = new Bitmap[Prot.size()];
 
         for (int i = 0;i < Prot.size();i++){
             proteins[i] = Prot.get(i).getName();
@@ -60,7 +60,7 @@ public class FridgeActivity extends AppCompatActivity {
 
         ArrayList<groceriesModel> Cer = (ArrayList<groceriesModel>) access.getAllCereals();
         String[] cereals = new String[Cer.size()];
-        Bitmap[] cerImage = new Bitmap[Veg.size()];
+        Bitmap[] cerImage = new Bitmap[Cer.size()];
 
         for (int i = 0;i < Cer.size();i++){
             cereals[i] = Cer.get(i).getName();

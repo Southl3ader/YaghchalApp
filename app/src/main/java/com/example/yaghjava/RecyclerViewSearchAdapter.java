@@ -49,7 +49,7 @@ public class RecyclerViewSearchAdapter extends RecyclerView.Adapter<RecyclerView
             @Override
             public void onClick(View view) {
                 SearchActivity.access.openDB();
-                SearchActivity.access.addToFridge(holder.myTextView.getText().toString());
+                SearchActivity.access.addToFridge2(holder.myTextView.getText().toString());
                 SearchActivity.access.closeDB();
             }
         });

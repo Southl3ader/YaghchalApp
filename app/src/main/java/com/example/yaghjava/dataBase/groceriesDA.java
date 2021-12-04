@@ -61,6 +61,13 @@ public class groceriesDA {
 
         database.execSQL(query);
     }
+    public void addToFridge2(String input){
+        String query ="insert into " + SqliteDB.TABLE_FRIDGE
+                + " select * from " + SqliteDB.TABLE_GROCERIES
+                + " where " + SqliteDB.NAME + " = " + "'" + input + "'";
+
+        database.execSQL(query);
+    }
 
     //update Vegetables details
     public void updateVegAttributes(String name , int amount, String BDate, String ExDate, String company, String type){
@@ -74,24 +81,33 @@ public class groceriesDA {
         database.execSQL(upQuery);
     }
 
-    //Set as default
-    public void defaultGro(String name){
-        String upQuery = "update " + SqliteDB.TABLE_GROCERIES
-                + " set " + SqliteDB.AMOUNT + " = " + 0 + " , "
-                + SqliteDB.BUY_DATE + " = " + "'" + null + "'" + " , "
-                + SqliteDB.EXPIRE_DATE + " = " + "'" + null + "'"+ " , "
-                + SqliteDB.COMPANY + " = " + "'" + null + "'"
-                + " where " + SqliteDB.NAME + " = " + "'" + name + "'";
+    //Remove from fridge
+    public void reduceAmount(String name, int amount, String BDate, String ExDate,String company, String type){
+        String query ="update " + SqliteDB.TABLE_FRIDGE
+                +" set " + SqliteDB.F_AMOUNT + " = " + amount + " - 1" + " , "
+                + " where " + SqliteDB.F_NAME + " = " + "'" + name + "'" + " and " + SqliteDB.F_EXPIRE_DATE;
 
-        database.execSQL(upQuery);
+        database.execSQL(query);
     }
+
+    //Set as default
+//    public void defaultGro(String name){
+//        String upQuery = "update " + SqliteDB.TABLE_GROCERIES
+//                + " set " + SqliteDB.AMOUNT + " = " + 0 + " , "
+//                + SqliteDB.BUY_DATE + " = " + "'" + null + "'" + " , "
+//                + SqliteDB.EXPIRE_DATE + " = " + "'" + null + "'"+ " , "
+//                + SqliteDB.COMPANY + " = " + "'" + null + "'"
+//                + " where " + SqliteDB.NAME + " = " + "'" + name + "'";
+//
+//        database.execSQL(upQuery);
+//    }
 
    //get all vegetables
     public List<groceriesModel> getAllVeg(){
 
         List<groceriesModel> models = new ArrayList<>();
-        String getAllVegQuery = "select * from " + SqliteDB.TABLE_GROCERIES
-                + " where " + SqliteDB.TYPE + " = " + "'" + "Veg" + "'" + " and " + SqliteDB.AMOUNT + " >= " + 1;
+        String getAllVegQuery = "select * from " + SqliteDB.TABLE_FRIDGE
+                + " where " + SqliteDB.F_TYPE + " = " + "'" + "Veg" + "'";
 
         Cursor cursor = database.rawQuery(getAllVegQuery, null);
         if (cursor.moveToFirst()){
@@ -111,13 +127,38 @@ public class groceriesDA {
         }
         return models;
     }
+
+//    public List<groceriesModel> getAllVeg(){
+//
+//        List<groceriesModel> models = new ArrayList<>();
+//        String getAllVegQuery = "select * from " + SqliteDB.TABLE_GROCERIES
+//                + " where " + SqliteDB.TYPE + " = " + "'" + "Veg" + "'" + " and " + SqliteDB.AMOUNT + " >= " + 1;
+//
+//        Cursor cursor = database.rawQuery(getAllVegQuery, null);
+//        if (cursor.moveToFirst()){
+//            do {
+//                String name = cursor.getString(0);
+//                int amount = cursor.getInt(1);
+//                String buy = cursor.getString(2);
+//                String expire = cursor.getString(3);
+//                String company = cursor.getString(4);
+//                String type = cursor.getString(5);
+//                byte[] image = cursor.getBlob(6);
+//                Bitmap bitmap = BitmapFactory.decodeByteArray(image,0,image.length);
+//
+//
+//                models.add(new groceriesModel(name , amount , buy , expire , company , type, bitmap));
+//            }while (cursor.moveToNext());
+//        }
+//        return models;
+//    }
 
     //get all Dairies
     public List<groceriesModel> getAllDairies(){
 
         List<groceriesModel> models = new ArrayList<>();
-        String getAllVegQuery = "select * from " + SqliteDB.TABLE_GROCERIES
-                + " where " + SqliteDB.TYPE + " = " + "'" + "Dairy" + "'" + " and " + SqliteDB.AMOUNT + " >= " + 1;
+        String getAllVegQuery = "select * from " + SqliteDB.TABLE_FRIDGE
+                + " where " + SqliteDB.F_TYPE + " = " + "'" + "Dairy" + "'";
 
         Cursor cursor = database.rawQuery(getAllVegQuery, null);
         if (cursor.moveToFirst()){
@@ -137,13 +178,38 @@ public class groceriesDA {
         }
         return models;
     }
+
+//    public List<groceriesModel> getAllDairies(){
+//
+//        List<groceriesModel> models = new ArrayList<>();
+//        String getAllVegQuery = "select * from " + SqliteDB.TABLE_GROCERIES
+//                + " where " + SqliteDB.TYPE + " = " + "'" + "Dairy" + "'" + " and " + SqliteDB.AMOUNT + " >= " + 1;
+//
+//        Cursor cursor = database.rawQuery(getAllVegQuery, null);
+//        if (cursor.moveToFirst()){
+//            do {
+//                String name = cursor.getString(0);
+//                int amount = cursor.getInt(1);
+//                String buy = cursor.getString(2);
+//                String expire = cursor.getString(3);
+//                String company = cursor.getString(4);
+//                String type = cursor.getString(5);
+//                byte[] image = cursor.getBlob(6);
+//                Bitmap bitmap = BitmapFactory.decodeByteArray(image,0,image.length);
+//
+//
+//                models.add(new groceriesModel(name , amount , buy , expire , company , type, bitmap));
+//            }while (cursor.moveToNext());
+//        }
+//        return models;
+//    }
 
     //get all Proteins
     public List<groceriesModel> getAllProteins(){
 
         List<groceriesModel> models = new ArrayList<>();
-        String getAllVegQuery = "select * from " + SqliteDB.TABLE_GROCERIES
-                + " where " + SqliteDB.TYPE + " = " + "'" + "Protein" + "'" + " and " + SqliteDB.AMOUNT + " >= " + 1;
+        String getAllVegQuery = "select * from " + SqliteDB.TABLE_FRIDGE
+                + " where " + SqliteDB.F_TYPE + " = " + "'" + "Protein" + "'";
 
         Cursor cursor = database.rawQuery(getAllVegQuery, null);
         if (cursor.moveToFirst()){
@@ -163,13 +229,38 @@ public class groceriesDA {
         }
         return models;
     }
+
+//    public List<groceriesModel> getAllProteins(){
+//
+//        List<groceriesModel> models = new ArrayList<>();
+//        String getAllVegQuery = "select * from " + SqliteDB.TABLE_GROCERIES
+//                + " where " + SqliteDB.TYPE + " = " + "'" + "Protein" + "'" + " and " + SqliteDB.AMOUNT + " >= " + 1;
+//
+//        Cursor cursor = database.rawQuery(getAllVegQuery, null);
+//        if (cursor.moveToFirst()){
+//            do {
+//                String name = cursor.getString(0);
+//                int amount = cursor.getInt(1);
+//                String buy = cursor.getString(2);
+//                String expire = cursor.getString(3);
+//                String company = cursor.getString(4);
+//                String type = cursor.getString(5);
+//                byte[] image = cursor.getBlob(6);
+//                Bitmap bitmap = BitmapFactory.decodeByteArray(image,0,image.length);
+//
+//
+//                models.add(new groceriesModel(name , amount , buy , expire , company , type, bitmap));
+//            }while (cursor.moveToNext());
+//        }
+//        return models;
+//    }
 
     //get all Cereals
     public List<groceriesModel> getAllCereals(){
 
         List<groceriesModel> models = new ArrayList<>();
-        String getAllVegQuery = "select * from " + SqliteDB.TABLE_GROCERIES
-                + " where " + SqliteDB.TYPE + " = " + "'" + "Cereal" + "'" + " and " + SqliteDB.AMOUNT + " >= " + 1;
+        String getAllVegQuery = "select * from " + SqliteDB.TABLE_FRIDGE
+                + " where " + SqliteDB.F_TYPE + " = " + "'" + "Cereal" + "'";
 
         Cursor cursor = database.rawQuery(getAllVegQuery, null);
         if (cursor.moveToFirst()){
@@ -189,6 +280,31 @@ public class groceriesDA {
         }
         return models;
     }
+
+//    public List<groceriesModel> getAllCereals(){
+//
+//        List<groceriesModel> models = new ArrayList<>();
+//        String getAllVegQuery = "select * from " + SqliteDB.TABLE_GROCERIES
+//                + " where " + SqliteDB.TYPE + " = " + "'" + "Cereal" + "'" + " and " + SqliteDB.AMOUNT + " >= " + 1;
+//
+//        Cursor cursor = database.rawQuery(getAllVegQuery, null);
+//        if (cursor.moveToFirst()){
+//            do {
+//                String name = cursor.getString(0);
+//                int amount = cursor.getInt(1);
+//                String buy = cursor.getString(2);
+//                String expire = cursor.getString(3);
+//                String company = cursor.getString(4);
+//                String type = cursor.getString(5);
+//                byte[] image = cursor.getBlob(6);
+//                Bitmap bitmap = BitmapFactory.decodeByteArray(image,0,image.length);
+//
+//
+//                models.add(new groceriesModel(name , amount , buy , expire , company , type, bitmap));
+//            }while (cursor.moveToNext());
+//        }
+//        return models;
+//    }
 
     //search
     public List<groceriesModel> search(String input){

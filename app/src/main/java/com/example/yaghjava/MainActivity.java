@@ -65,11 +65,11 @@ public class MainActivity extends AppCompatActivity {
 
     //Add vegetables to database
     public void addVegetables(){
-        access.insert("Tomato", "Veg", imageToBytes(BitmapFactory.decodeResource(getResources(),R.drawable.tomato)));
-        access.insert("Carrot", "Veg",imageToBytes(BitmapFactory.decodeResource(getResources(),R.drawable.carrot)));
-        access.insert("Cabbage", "Veg",imageToBytes(BitmapFactory.decodeResource(getResources(),R.drawable.cabbage)));
-        access.insert("Garlic", "Veg",imageToBytes(BitmapFactory.decodeResource(getResources(),R.drawable.garlic)));
-        access.insert("Eggplant", "Veg",imageToBytes(BitmapFactory.decodeResource(getResources(),R.drawable.eggplant)));
+        access.insert("گوجه", "Veg", imageToBytes(BitmapFactory.decodeResource(getResources(),R.drawable.tomato)));
+        access.insert("هویج", "Veg",imageToBytes(BitmapFactory.decodeResource(getResources(),R.drawable.carrot)));
+        access.insert("کلم", "Veg",imageToBytes(BitmapFactory.decodeResource(getResources(),R.drawable.cabbage)));
+        access.insert("سیر", "Veg",imageToBytes(BitmapFactory.decodeResource(getResources(),R.drawable.garlic)));
+        access.insert("بادمجان", "Veg",imageToBytes(BitmapFactory.decodeResource(getResources(),R.drawable.eggplant)));
 
 
 
@@ -81,17 +81,17 @@ public class MainActivity extends AppCompatActivity {
 
     //Add dairies to database
     public void addDairies(){
-        access.insert("Milk", "Dairy",imageToBytes(BitmapFactory.decodeResource(getResources(),R.drawable.milk)));
-        access.insert("Cheese", "Dairy",imageToBytes(BitmapFactory.decodeResource(getResources(),R.drawable.cheese)));
+        access.insert("شیر", "Dairy",imageToBytes(BitmapFactory.decodeResource(getResources(),R.drawable.milk)));
+        access.insert("پنیر", "Dairy",imageToBytes(BitmapFactory.decodeResource(getResources(),R.drawable.cheese)));
 
 
 
     }
     //Add Protein to database
     public void addProtein(){
-        access.insert("Egg", "Protein",imageToBytes(BitmapFactory.decodeResource(getResources(),R.drawable.egg)));
-        access.insert("Meat", "Protein",imageToBytes(BitmapFactory.decodeResource(getResources(),R.drawable.meat)));
-        access.insert("Fish", "Protein",imageToBytes(BitmapFactory.decodeResource(getResources(),R.drawable.fish)));
+        access.insert("تخم مرغ", "Protein",imageToBytes(BitmapFactory.decodeResource(getResources(),R.drawable.egg)));
+        access.insert("گوشت قرمز", "Protein",imageToBytes(BitmapFactory.decodeResource(getResources(),R.drawable.meat)));
+        access.insert("ماهی", "Protein",imageToBytes(BitmapFactory.decodeResource(getResources(),R.drawable.fish)));
 
 
 
@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
 
     //Add Cereals to database
     public void addCereal(){
-        access.insert("Bread", "Cereal",imageToBytes(BitmapFactory.decodeResource(getResources(),R.drawable.bread)));
+        access.insert("نان", "Cereal",imageToBytes(BitmapFactory.decodeResource(getResources(),R.drawable.bread)));
 
 
 
