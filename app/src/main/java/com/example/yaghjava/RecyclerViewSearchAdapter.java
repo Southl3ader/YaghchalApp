@@ -2,16 +2,19 @@ package com.example.yaghjava;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.yaghjava.dataBase.groceriesDA;
@@ -36,8 +39,8 @@ public class RecyclerViewSearchAdapter extends RecyclerView.Adapter<RecyclerView
     @NonNull
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         cnt = parent.getContext();
-        View view = LayoutInflater.from(cnt).inflate(R.layout.recyclerview_search, parent, false);
-        return new ViewHolder(view);
+        View search = LayoutInflater.from(cnt).inflate(R.layout.recyclerview_search, parent, false);
+        return new ViewHolder(search);
 
     }
 
@@ -48,12 +51,34 @@ public class RecyclerViewSearchAdapter extends RecyclerView.Adapter<RecyclerView
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SearchActivity.access.openDB();
-                SearchActivity.access.addToFridge2(holder.myTextView.getText().toString());
-                SearchActivity.access.closeDB();
+//                SearchActivity.access.openDB();
+//                SearchActivity.access.addToFridge2(holder.myTextView.getText().toString());
+//                SearchActivity.access.closeDB();
+                AlertDialog.Builder builder = new AlertDialog.Builder(view.getRootView().getContext());
+                View dialogview = LayoutInflater.from(view.getRootView().getContext()).inflate(R.layout.popup_company,null);
+                ImageView imageView = view.findViewById(R.id.c_image);
+                TextView textView =  view.findViewById(R.id.c_name);
+                EditText amount = view.findViewById(R.id.c_amount);
+                EditText bdate = view.findViewById(R.id.c_bdate);
+                EditText edate = view.findViewById(R.id.c_edate);
+                EditText company = view.findViewById(R.id.c_company);
+                EditText button = view.findViewById(R.id.c_add);
+                builder.setView(dialogview);
+                builder.setCancelable(true);
+                builder.show();
+//                button.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//
+//                    }
+//                });
+
+
             }
         });
     }
+
+
 
     // total number of cells
     @Override

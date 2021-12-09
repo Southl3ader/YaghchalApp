@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="300dp"
+    android:layout_height="600dp"
+    tools:context=".PopupNoCompanyActivity"
+    android:orientation="vertical"
+    android:textDirection="rtl"
+    android:layoutDirection="rtl"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:padding="20dp">
+
+    <ImageView
+        android:id="@+id/n_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:srcCompat="@tools:sample/avatars"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:id="@+id/n_name"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginBottom="20dp"
+        android:textAlignment="center"/>
+
+    <EditText
+        android:id="@+id/n_amount"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:inputType="number"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/frame"
+        android:hint="تعداد"
+        android:textAlignment="center"/>
+
+    <EditText
+        android:id="@+id/n_bdate"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:inputType="date"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/frame"
+        android:hint="تاریخ خرید"
+        android:textAlignment="center"/>
+
+    <EditText
+        android:id="@+id/n_edate"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:inputType="date"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/frame"
+        android:hint="تاریخ انقضا"
+        android:textAlignment="center"/>
+
+    <Button
+        android:id="@+id/n_add"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="اضافه کردن"
+        android:backgroundTint="#4D3091"/>
+
+
+</LinearLayout>
