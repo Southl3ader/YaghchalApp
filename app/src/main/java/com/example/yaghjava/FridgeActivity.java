@@ -61,6 +61,7 @@ public class FridgeActivity extends AppCompatActivity {
             proteins[i] = Prot.get(i).getName();
             protImage[i] = Prot.get(i).getImage();
             protAmount[i] = String.valueOf(Prot.get(i).getAmount());
+            System.out.println(Prot.get(i).getAmount());
 
         }
 
@@ -72,7 +73,7 @@ public class FridgeActivity extends AppCompatActivity {
         for (int i = 0;i < Cer.size();i++){
             cereals[i] = Cer.get(i).getName();
             cerImage[i] = Cer.get(i).getImage();
-            cerAmount[i] = String.valueOf(Prot.get(i).getAmount());
+            cerAmount[i] = String.valueOf(Cer.get(i).getAmount());
 
         }
         access.closeDB();

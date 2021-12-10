@@ -62,8 +62,8 @@ public class groceriesDA {
         database.execSQL(query);
     }
     public void addToFridge2(String input,int amount, String buy, String ex, String company){
-        String query ="insert into " + SqliteDB.TABLE_FRIDGE
-                + " select * from " + SqliteDB.TABLE_GROCERIES
+        String query ="insert into " + SqliteDB.TABLE_FRIDGE + " ( " + SqliteDB.F_NAME + " , " + SqliteDB.F_TYPE + " , " + SqliteDB.F_IMAGE + " )"
+                + " select " + SqliteDB.NAME + " , " + SqliteDB.TYPE + " , " + SqliteDB.IMAGE + " from " + SqliteDB.TABLE_GROCERIES
                 + " where " + SqliteDB.NAME + " = " + "'" + input + "'";
 
         database.execSQL(query);
@@ -72,7 +72,13 @@ public class groceriesDA {
                 + SqliteDB.F_BUY_DATE + " = " + "'" + buy + "'" + " , "
                 + SqliteDB.F_EXPIRE_DATE + " = " + "'" + ex + "'" + " , "
                 + SqliteDB.F_COMPANY + " = " + "'" + company + "'"
-                + " where " + SqliteDB.F_NAME + " = " + "'" + input + "'" ;
+//                + " where " + SqliteDB.F_NAME + " = " + "'" + input + "'"
+                + " where " + SqliteDB.F_ID + " in ( "
+                + " select " + SqliteDB.F_ID + " from " + SqliteDB.TABLE_FRIDGE
+                + " where " + SqliteDB.F_NAME + " = " + "'" + input + "'"
+                + " order by " + SqliteDB.F_ID + " desc limit 1)";
+//                + " ORDER BY " + SqliteDB.F_ID + " DESC"
+//                + " LIMIT 1";
         database.execSQL(query1);
     }
 
@@ -119,17 +125,18 @@ public class groceriesDA {
         Cursor cursor = database.rawQuery(getAllVegQuery, null);
         if (cursor.moveToFirst()){
             do {
-                String name = cursor.getString(0);
-                int amount = cursor.getInt(1);
-                String buy = cursor.getString(2);
-                String expire = cursor.getString(3);
-                String company = cursor.getString(4);
-                String type = cursor.getString(5);
-                byte[] image = cursor.getBlob(6);
+                int id = cursor.getInt(0);
+                String name = cursor.getString(1);
+                int amount = cursor.getInt(2);
+                String buy = cursor.getString(3);
+                String expire = cursor.getString(4);
+                String company = cursor.getString(5);
+                String type = cursor.getString(6);
+                byte[] image = cursor.getBlob(7);
                 Bitmap bitmap = BitmapFactory.decodeByteArray(image,0,image.length);
 
 
-                models.add(new groceriesModel(name , amount , buy , expire , company , type, bitmap));
+                models.add(new groceriesModel(id,name , amount , buy , expire , company , type, bitmap));
             }while (cursor.moveToNext());
         }
         return models;
@@ -170,17 +177,18 @@ public class groceriesDA {
         Cursor cursor = database.rawQuery(getAllVegQuery, null);
         if (cursor.moveToFirst()){
             do {
-                String name = cursor.getString(0);
-                int amount = cursor.getInt(1);
-                String buy = cursor.getString(2);
-                String expire = cursor.getString(3);
-                String company = cursor.getString(4);
-                String type = cursor.getString(5);
-                byte[] image = cursor.getBlob(6);
+                int id = cursor.getInt(0);
+                String name = cursor.getString(1);
+                int amount = cursor.getInt(2);
+                String buy = cursor.getString(3);
+                String expire = cursor.getString(4);
+                String company = cursor.getString(5);
+                String type = cursor.getString(6);
+                byte[] image = cursor.getBlob(7);
                 Bitmap bitmap = BitmapFactory.decodeByteArray(image,0,image.length);
 
 
-                models.add(new groceriesModel(name , amount , buy , expire , company , type, bitmap));
+                models.add(new groceriesModel(id,name , amount , buy , expire , company , type, bitmap));
             }while (cursor.moveToNext());
         }
         return models;
@@ -221,17 +229,18 @@ public class groceriesDA {
         Cursor cursor = database.rawQuery(getAllVegQuery, null);
         if (cursor.moveToFirst()){
             do {
-                String name = cursor.getString(0);
-                int amount = cursor.getInt(1);
-                String buy = cursor.getString(2);
-                String expire = cursor.getString(3);
-                String company = cursor.getString(4);
-                String type = cursor.getString(5);
-                byte[] image = cursor.getBlob(6);
+                int id = cursor.getInt(0);
+                String name = cursor.getString(1);
+                int amount = cursor.getInt(2);
+                String buy = cursor.getString(3);
+                String expire = cursor.getString(4);
+                String company = cursor.getString(5);
+                String type = cursor.getString(6);
+                byte[] image = cursor.getBlob(7);
                 Bitmap bitmap = BitmapFactory.decodeByteArray(image,0,image.length);
 
 
-                models.add(new groceriesModel(name , amount , buy , expire , company , type, bitmap));
+                models.add(new groceriesModel(id,name , amount , buy , expire , company , type, bitmap));
             }while (cursor.moveToNext());
         }
         return models;
@@ -272,17 +281,18 @@ public class groceriesDA {
         Cursor cursor = database.rawQuery(getAllVegQuery, null);
         if (cursor.moveToFirst()){
             do {
-                String name = cursor.getString(0);
-                int amount = cursor.getInt(1);
-                String buy = cursor.getString(2);
-                String expire = cursor.getString(3);
-                String company = cursor.getString(4);
-                String type = cursor.getString(5);
-                byte[] image = cursor.getBlob(6);
+                int id = cursor.getInt(0);
+                String name = cursor.getString(1);
+                int amount = cursor.getInt(2);
+                String buy = cursor.getString(3);
+                String expire = cursor.getString(4);
+                String company = cursor.getString(5);
+                String type = cursor.getString(6);
+                byte[] image = cursor.getBlob(7);
                 Bitmap bitmap = BitmapFactory.decodeByteArray(image,0,image.length);
 
 
-                models.add(new groceriesModel(name , amount , buy , expire , company , type, bitmap));
+                models.add(new groceriesModel(id,name , amount , buy , expire , company , type, bitmap));
             }while (cursor.moveToNext());
         }
         return models;
@@ -368,17 +378,18 @@ public class groceriesDA {
 
         if (cursor.moveToFirst()){
             do {
-                String name = cursor.getString(0);
-                int amount = cursor.getInt(1);
-                String buy = cursor.getString(2);
-                String expire = cursor.getString(3);
-                String company = cursor.getString(4);
-                String type = cursor.getString(5);
-                byte[] image = cursor.getBlob(6);
+                int id = cursor.getInt(0);
+                String name = cursor.getString(1);
+                int amount = cursor.getInt(2);
+                String buy = cursor.getString(3);
+                String expire = cursor.getString(4);
+                String company = cursor.getString(5);
+                String type = cursor.getString(6);
+                byte[] image = cursor.getBlob(7);
                 Bitmap bitmap = BitmapFactory.decodeByteArray(image,0,image.length);
 
 
-                models.add(new groceriesModel(name , amount , buy , expire , company , type, bitmap));
+                models.add(new groceriesModel(id,name , amount , buy , expire , company , type, bitmap));
             }while (cursor.moveToNext());
         }
         return models;

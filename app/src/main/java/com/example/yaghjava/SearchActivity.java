@@ -67,17 +67,19 @@ public class SearchActivity extends AppCompatActivity {
                 access.openDB();
 
                 ArrayList<groceriesModel> Search = (ArrayList<groceriesModel>) access.search(editable.toString());
+                int[] id = new int[Search.size()];
                 String[] searchItems = new String[Search.size()];
                 String[] type = new String[Search.size()];
                 Bitmap[] Image = new Bitmap[Search.size()];
                 if (editable.length() != 0) {
                     for (int i = 0; i < Search.size(); i++) {
+                        id[i] = Search.get(i).getID();
                         searchItems[i] = Search.get(i).getName();
                         Image[i] = Search.get(i).getImage();
                         type[i] = Search.get(i).getType();
                     }
                     access.closeDB();
-                    RecyclerViewSearchAdapter adapterSearch = new RecyclerViewSearchAdapter(getApplicationContext(), searchItems,Image,type);
+                    RecyclerViewSearchAdapter adapterSearch = new RecyclerViewSearchAdapter(getApplicationContext(), id,searchItems,Image,type);
                     int numberOfColumns = 1;
                     recyclerViewSearch.setLayoutManager(new GridLayoutManager(getApplicationContext(), numberOfColumns));
                     recyclerViewSearch.setAdapter(adapterSearch);

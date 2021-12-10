@@ -24,6 +24,7 @@ public class RecyclerViewSearchAdapter extends RecyclerView.Adapter<RecyclerView
 
     private String[] mData;
     private String[] mType;
+    private int[] mID;
     private ItemClickListener mClickListener;
     Context cnt;
     private Bitmap[] pic;
@@ -33,7 +34,8 @@ public class RecyclerViewSearchAdapter extends RecyclerView.Adapter<RecyclerView
 
 
     // data is passed into the constructor
-    RecyclerViewSearchAdapter(Context context, String[] search, Bitmap[] pic, String[] type) {
+    RecyclerViewSearchAdapter(Context context,int[] id, String[] search, Bitmap[] pic, String[] type) {
+        this.mID = id;
         this.cnt = context;
         this.mData = search;
         this.pic = pic;
@@ -107,6 +109,7 @@ public class RecyclerViewSearchAdapter extends RecyclerView.Adapter<RecyclerView
                             int a =Integer.parseInt(S);
                             SearchActivity.access.openDB();
                             SearchActivity.access.addToFridge2(textView.getText().toString(),a ,bdate.getText().toString(),edate.getText().toString(),null);
+                            System.out.println(mID[position]);
                             SearchActivity.access.closeDB();
                             Toast.makeText(cnt.getApplicationContext(), textView.getText().toString() + " به یخچال شما اضافه شد", Toast.LENGTH_SHORT).show();
                         }

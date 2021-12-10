@@ -13,7 +13,7 @@ import java.util.Date;
 public class SqliteDB extends SQLiteOpenHelper {
 
     public static final String DB_NAME = "yaghchal.db";
-    public static final int DB_Version = 9;
+    public static final int DB_Version = 12;
 
     //g_table
     public static final String TABLE_GROCERIES = "groceries";
@@ -26,6 +26,7 @@ public class SqliteDB extends SQLiteOpenHelper {
     public static final String IMAGE = "image";
 
     public static final String TABLE_FRIDGE= "fridge";
+    public static final String F_ID = "f_id";
     public static final String F_NAME = "f_name";
     public static final String F_AMOUNT = "f_amount";
     public static final String F_BUY_DATE = "f_buy";
@@ -57,9 +58,10 @@ public class SqliteDB extends SQLiteOpenHelper {
 
         //f_table
         String query1 = "CREATE TABLE IF NOT EXISTS " + TABLE_FRIDGE + " ( " +
+                F_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 F_NAME + " TEXT NOT NULL , " +
                 F_AMOUNT + " INTEGER DEFAULT NULL , " +
-                F_BUY_DATE + " TEXT NOT NULL , " +
+                F_BUY_DATE + " TEXT , " +
                 F_EXPIRE_DATE + " TEXT , " +
                 F_COMPANY + " TEXT ," +
                 F_TYPE + " TEXT ," +
