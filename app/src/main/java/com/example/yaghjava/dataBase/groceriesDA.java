@@ -61,12 +61,19 @@ public class groceriesDA {
 
         database.execSQL(query);
     }
-    public void addToFridge2(String input){
+    public void addToFridge2(String input,int amount, String buy, String ex, String company){
         String query ="insert into " + SqliteDB.TABLE_FRIDGE
                 + " select * from " + SqliteDB.TABLE_GROCERIES
                 + " where " + SqliteDB.NAME + " = " + "'" + input + "'";
 
         database.execSQL(query);
+        String query1 = "update " + SqliteDB.TABLE_FRIDGE
+                + " set " + SqliteDB.F_AMOUNT + " = " +  amount + " , "
+                + SqliteDB.F_BUY_DATE + " = " + "'" + buy + "'" + " , "
+                + SqliteDB.F_EXPIRE_DATE + " = " + "'" + ex + "'" + " , "
+                + SqliteDB.F_COMPANY + " = " + "'" + company + "'"
+                + " where " + SqliteDB.F_NAME + " = " + "'" + input + "'" ;
+        database.execSQL(query1);
     }
 
     //update Vegetables details
@@ -82,10 +89,10 @@ public class groceriesDA {
     }
 
     //Remove from fridge
-    public void reduceAmount(String name, int amount, String BDate, String ExDate,String company, String type){
+    public void changeAmount(String name, int amount, String BDate, String ExDate,String company, String type){
         String query ="update " + SqliteDB.TABLE_FRIDGE
-                +" set " + SqliteDB.F_AMOUNT + " = " + amount + " - 1" + " , "
-                + " where " + SqliteDB.F_NAME + " = " + "'" + name + "'" + " and " + SqliteDB.F_EXPIRE_DATE;
+                +" set " + SqliteDB.F_AMOUNT + " = " + amount + " , "
+                + " where " + SqliteDB.F_NAME + " = " + "'" + name + "'" + " and " + SqliteDB.F_BUY_DATE + " = " + "'" + BDate + "'" + " and " + SqliteDB.F_EXPIRE_DATE + " = " + "'" + ExDate + "'" + " and " + SqliteDB.F_COMPANY + " = " + "'" + company + "'" + " and " + SqliteDB.F_TYPE + " = " + "'" + type + "'";
 
         database.execSQL(query);
     }
