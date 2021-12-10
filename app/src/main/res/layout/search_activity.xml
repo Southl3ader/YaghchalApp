@@ -18,7 +18,9 @@
             android:id="@+id/searchbar"
             style="@style/searchStyle"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="52dp"
+            android:textSize="16dp"
+            android:fontFamily="@font/vazir"
             android:layout_marginTop="20dp"
             android:padding="15dp"
             android:windowSoftInputMode="stateAlwaysVisible"/>

@@ -9,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.compose.ui.BiasAbsoluteAlignment;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class RecyclerViewItemsAdapter extends RecyclerView.Adapter<RecyclerViewItemsAdapter.ViewHolder> {
@@ -18,12 +17,14 @@ public class RecyclerViewItemsAdapter extends RecyclerView.Adapter<RecyclerViewI
     private ItemClickListener mClickListener;
     Context cnt;
     Bitmap[] pic;
+    private String[] itemcount;
 
     // data is passed into the constructor
-    RecyclerViewItemsAdapter(Context context, String[] data, Bitmap[] pic) {
+    RecyclerViewItemsAdapter(Context context, String[] data, Bitmap[] pic, String[] ItemAmount) {
         this.mData = data;
         this.cnt = context;
         this.pic = pic;
+        this.itemcount = ItemAmount;
     }
 
     // inflates the cell layout from xml when needed
@@ -39,6 +40,7 @@ public class RecyclerViewItemsAdapter extends RecyclerView.Adapter<RecyclerViewI
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.myTextView.setText(mData[position].toString());
+        holder.ItemCountText.setText(itemcount[position].toString());
         holder.imageView.setImageBitmap(pic[position]);
     }
 
@@ -52,10 +54,12 @@ public class RecyclerViewItemsAdapter extends RecyclerView.Adapter<RecyclerViewI
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView myTextView;
+        TextView ItemCountText;
         ImageView imageView;
         ViewHolder(View itemView) {
             super(itemView);
             myTextView = itemView.findViewById(R.id.groceries);
+            ItemCountText = itemView.findViewById(R.id.groceries_count);
             imageView = itemView.findViewById(R.id.img);
             //myTextView.setBackgroundResource(R.drawable.cabbage);
             itemView.setOnClickListener(this);

@@ -24,7 +24,18 @@
         android:id="@+id/groceries"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fontFamily="@font/vazir"
         android:textAlignment="center"
+        android:textColor="#000" />
+    <TextView
+        android:id="@+id/groceries_count"
+        android:layout_width="30dp"
+        android:layout_height="25dp"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:fontFamily="@font/vazir"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/item_count_background"
         android:textColor="#000" />
 
 </LinearLayout>

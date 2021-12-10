@@ -10,6 +10,7 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#FFFFFF"
         android:orientation="vertical"
         android:layoutDirection="rtl"
         android:textDirection="rtl"
@@ -19,7 +20,9 @@
             android:id="@+id/searchbar"
             style="@style/searchStyle"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="52dp"
+            android:fontFamily="@font/vazir"
+            android:textSize="16dp"
             android:layout_marginTop="20dp"
             android:focusable="false"
             android:padding="15dp" />
@@ -43,6 +46,7 @@
                     android:layout_marginRight="10dp"
                     android:layout_marginBottom="10dp"
                     android:textDirection="rtl"
+                    android:fontFamily="@font/vazir"
                     android:text="سبزیجات"
                     android:textSize="20dp"
                     android:textStyle="bold" />
@@ -58,6 +62,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
                     android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/vazir"
                     android:text="لبنیات"
                     android:textSize="20dp"
                     android:textStyle="bold" />
@@ -73,6 +78,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
                     android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/vazir"
                     android:text="پروتئین ها"
                     android:textSize="20dp"
                     android:textStyle="bold" />
@@ -88,6 +94,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
                     android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/vazir"
                     android:text="غلات"
                     android:textSize="20dp"
                     android:textStyle="bold" />
@@ -120,7 +127,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="75dp"
+        android:layout_height="78dp"
         android:layout_gravity="bottom"
         android:background="@drawable/roundmenu"
         android:backgroundTint="#A1a1a1"
@@ -128,40 +135,7 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent">
 
-        <Button
-            android:id="@+id/fridge"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:backgroundTint="#A1A1A1"
-            android:drawableTop="@drawable/ic_fridge"
-            android:drawableTint="@color/Primary"
-            android:hapticFeedbackEnabled="false"
-            android:padding="5dp"
-            android:text="Home"
-            android:textAlignment="center"
-            android:textAllCaps="false"
-            android:textColor="@color/PrimaryDark"
-            app:cornerRadius="15dp"></Button>
 
-        <Button
-            android:id="@+id/recipe"
-
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
-            android:backgroundTint="#A1A1A1"
-            android:drawableTop="@drawable/ic_recipe_unselect"
-            android:drawableTint="@color/MenuDeselect"
-            android:padding="5dp"
-            android:text="Recipe"
-            android:textSize="11.5dp"
-            android:textAllCaps="false"
-            android:textColor="@color/MenuDeselect"
-            app:cornerRadius="15dp"></Button>
 
         <Button
             android:id="@+id/settings"
@@ -175,10 +149,50 @@
             android:drawableTop="@drawable/ic_settings_unselect"
             android:drawableTint="@color/MenuDeselect"
             android:padding="5dp"
-            android:text="Settings"
+            android:fontFamily="@font/vazir"
+            android:text="تنظیمات"
             android:textSize="11.5dp"
             android:textAllCaps="false"
             android:textColor="@color/MenuDeselect"
+            app:cornerRadius="15dp"></Button>
+
+        <Button
+            android:id="@+id/recipe"
+
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:backgroundTint="#A1A1A1"
+            android:drawableTop="@drawable/ic_clipboard_unselect"
+            android:drawableTint="@color/MenuDeselect"
+            android:padding="5dp"
+            android:fontFamily="@font/vazir"
+            android:text="لیست خرید"
+            android:textSize="11.5dp"
+            android:textAllCaps="false"
+            android:textColor="@color/MenuDeselect"
+            app:cornerRadius="15dp"></Button>
+
+
+        <Button
+            android:id="@+id/fridge"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:backgroundTint="#A1A1A1"
+            android:clickable="false"
+            android:drawableTop="@drawable/ic_fridge"
+            android:drawableTint="@color/Primary"
+            android:fontFamily="@font/vazir_bold"
+            android:textSize="13.5dp"
+            android:padding="5dp"
+            android:text="یقچال"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/PrimaryDark"
             app:cornerRadius="15dp"></Button>
 
     </LinearLayout>

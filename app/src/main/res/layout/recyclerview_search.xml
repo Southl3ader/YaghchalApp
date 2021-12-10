@@ -17,6 +17,7 @@
     <TextView
         android:id="@+id/searchItems"
         android:layout_width="match_parent"
+        android:fontFamily="@font/vazir"
         android:layout_height="match_parent"
         android:textAlignment="center"
         android:textColor="#000" />

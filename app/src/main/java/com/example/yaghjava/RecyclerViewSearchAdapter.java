@@ -108,7 +108,7 @@ public class RecyclerViewSearchAdapter extends RecyclerView.Adapter<RecyclerView
                             SearchActivity.access.openDB();
                             SearchActivity.access.addToFridge2(textView.getText().toString(),a ,bdate.getText().toString(),edate.getText().toString(),null);
                             SearchActivity.access.closeDB();
-                            Toast.makeText(cnt.getApplicationContext(), textView.getText().toString() + "به یخچال شما اضافه شد", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(cnt.getApplicationContext(), textView.getText().toString() + " به یخچال شما اضافه شد", Toast.LENGTH_SHORT).show();
                         }
                     });
 

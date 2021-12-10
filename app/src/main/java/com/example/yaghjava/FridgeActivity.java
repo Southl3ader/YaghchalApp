@@ -31,40 +31,48 @@ public class FridgeActivity extends AppCompatActivity {
         ArrayList<groceriesModel> Veg = (ArrayList<groceriesModel>) access.getAllVeg();
         String[] vegetables = new String[Veg.size()];
         Bitmap[] vegImage = new Bitmap[Veg.size()];
+        String[] vegAmount = new String[Veg.size()];
 
         for (int i = 0;i < Veg.size();i++){
             vegetables[i] = Veg.get(i).getName();
             vegImage[i] = Veg.get(i).getImage();
+            vegAmount[i] = String.valueOf(Veg.get(i).getAmount());
         }
 
 
         ArrayList<groceriesModel> Dair = (ArrayList<groceriesModel>) access.getAllDairies();
         String[] dairies = new String[Dair.size()];
         Bitmap[] dairImage = new Bitmap[Dair.size()];
+        String[] dairAmount = new String[Dair.size()];
 
         for (int i = 0;i < Dair.size();i++){
             dairies[i] = Dair.get(i).getName();
             dairImage[i] = Dair.get(i).getImage();
+            dairAmount[i] = String.valueOf(Dair.get(i).getAmount());
 
         }
 
         ArrayList<groceriesModel> Prot = (ArrayList<groceriesModel>) access.getAllProteins();
         String[] proteins = new String[Prot.size()];
         Bitmap[] protImage = new Bitmap[Prot.size()];
+        String[] protAmount = new String[Prot.size()];
 
         for (int i = 0;i < Prot.size();i++){
             proteins[i] = Prot.get(i).getName();
             protImage[i] = Prot.get(i).getImage();
+            protAmount[i] = String.valueOf(Prot.get(i).getAmount());
 
         }
 
         ArrayList<groceriesModel> Cer = (ArrayList<groceriesModel>) access.getAllCereals();
         String[] cereals = new String[Cer.size()];
         Bitmap[] cerImage = new Bitmap[Cer.size()];
+        String[] cerAmount = new String[Cer.size()];
 
         for (int i = 0;i < Cer.size();i++){
             cereals[i] = Cer.get(i).getName();
             cerImage[i] = Cer.get(i).getImage();
+            cerAmount[i] = String.valueOf(Prot.get(i).getAmount());
 
         }
         access.closeDB();
@@ -81,13 +89,13 @@ public class FridgeActivity extends AppCompatActivity {
         recyclerViewProt.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
         recyclerViewCer.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
 
-        RecyclerViewItemsAdapter adapterVeg = new RecyclerViewItemsAdapter(this, vegetables, vegImage);
+        RecyclerViewItemsAdapter adapterVeg = new RecyclerViewItemsAdapter(this, vegetables, vegImage, vegAmount);
         recyclerViewVeg.setAdapter(adapterVeg);
-        RecyclerViewItemsAdapter adapterDair = new RecyclerViewItemsAdapter(this, dairies, dairImage);
+        RecyclerViewItemsAdapter adapterDair = new RecyclerViewItemsAdapter(this, dairies, dairImage, dairAmount);
         recyclerViewDair.setAdapter(adapterDair);
-        RecyclerViewItemsAdapter adapterProt = new RecyclerViewItemsAdapter(this, proteins, protImage);
+        RecyclerViewItemsAdapter adapterProt = new RecyclerViewItemsAdapter(this, proteins, protImage, protAmount);
         recyclerViewProt.setAdapter(adapterProt);
-        RecyclerViewItemsAdapter adapterCer = new RecyclerViewItemsAdapter(this, cereals, cerImage);
+        RecyclerViewItemsAdapter adapterCer = new RecyclerViewItemsAdapter(this, cereals, cerImage, cerAmount);
         recyclerViewCer.setAdapter(adapterCer);
 
 
