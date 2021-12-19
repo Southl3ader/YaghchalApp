@@ -102,11 +102,11 @@ public class FridgeActivity extends AppCompatActivity {
 
         //Bottom Menu OnClick Functions To Change Pages
 
-        Button button = (Button) findViewById(R.id.recipe);
+        Button button = (Button) findViewById(R.id.shoppingList);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(FridgeActivity.this, RecipeActivity.class);
+                Intent intent = new Intent(FridgeActivity.this, ShoppingListActivity.class);
                 startActivity(intent);
                 finish();
                 overridePendingTransition(0, 0);

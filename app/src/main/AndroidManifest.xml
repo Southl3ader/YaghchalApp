@@ -16,13 +16,10 @@
             android:name=".PopupCompanyActivity"
             android:exported="true" />
         <activity
-            android:name=".DeleteItemsActivity"
-            android:exported="true" />
-        <activity
             android:name=".FridgeActivity"
             android:exported="true" />
         <activity android:name=".SearchActivity" />
-        <activity android:name=".RecipeActivity" />
+        <activity android:name=".ShoppingListActivity" />
         <activity android:name=".SettingsActivity" />
         <activity
             android:name=".MainActivity"

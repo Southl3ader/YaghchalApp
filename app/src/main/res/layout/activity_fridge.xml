@@ -14,7 +14,8 @@
         android:orientation="vertical"
         android:layoutDirection="rtl"
         android:textDirection="rtl"
-        tools:ignore="MissingConstraints">
+        tools:ignore="MissingConstraints"
+        android:backgroundTint="#8ab045">
 
         <EditText
             android:id="@+id/searchbar"
@@ -53,6 +54,23 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/vegetables"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:textDirection="rtl"
+                    android:fontFamily="@font/vazir"
+                    android:text="میوه ها"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/fruit"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="20dp" />
@@ -130,7 +148,7 @@
         android:layout_height="78dp"
         android:layout_gravity="bottom"
         android:background="@drawable/roundmenu"
-        android:backgroundTint="#A1a1a1"
+        android:backgroundTint="#70ffffff"
         android:gravity="bottom"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent">
@@ -157,7 +175,7 @@
             app:cornerRadius="15dp"></Button>
 
         <Button
-            android:id="@+id/recipe"
+            android:id="@+id/shoppingList"
 
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="wrap_content"

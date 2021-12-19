@@ -2,13 +2,21 @@ package com.example.yaghjava;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.util.Log;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class RecyclerViewItemsAdapter extends RecyclerView.Adapter<RecyclerViewItemsAdapter.ViewHolder> {
@@ -42,6 +50,34 @@ public class RecyclerViewItemsAdapter extends RecyclerView.Adapter<RecyclerViewI
         holder.myTextView.setText(mData[position].toString());
         holder.ItemCountText.setText(itemcount[position].toString());
         holder.imageView.setImageBitmap(pic[position]);
+        holder.linearLayout.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(view.getRootView().getContext());
+                View dialogview = LayoutInflater.from(view.getRootView().getContext()).inflate(R.layout.activity_delete_items,null);
+                Button yes = dialogview.findViewById(R.id.yes);
+                Button no = dialogview.findViewById(R.id.no);
+//                TextView textView =  dialogview.findViewById(R.id.groceries);
+//                textView.setText(holder.myTextView.getText().toString());
+                builder.setView(dialogview);
+                builder.setCancelable(true);
+                AlertDialog ad = builder.show();
+                yes.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        //Toast.makeText(cnt.getApplicationContext(), textView.getText().toString() + " از یخچال شما حذف شد", Toast.LENGTH_SHORT).show();
+                        ad.cancel();
+                    }
+                });
+                no.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        ad.cancel();
+                    }
+                });
+                return true;
+            }
+        });
     }
 
     // total number of cells
@@ -56,12 +92,13 @@ public class RecyclerViewItemsAdapter extends RecyclerView.Adapter<RecyclerViewI
         TextView myTextView;
         TextView ItemCountText;
         ImageView imageView;
+        LinearLayout linearLayout;
         ViewHolder(View itemView) {
             super(itemView);
             myTextView = itemView.findViewById(R.id.groceries);
             ItemCountText = itemView.findViewById(R.id.groceries_count);
             imageView = itemView.findViewById(R.id.img);
-            //myTextView.setBackgroundResource(R.drawable.cabbage);
+            linearLayout = itemView.findViewById(R.id.selective_items);
             itemView.setOnClickListener(this);
         }
 

@@ -29,7 +29,7 @@ public class RecyclerViewSearchAdapter extends RecyclerView.Adapter<RecyclerView
     Context cnt;
     private Bitmap[] pic;
     String S = "0";
-    PopupCompanyActivity popupCompanyActivity = new PopupCompanyActivity();
+    //PopupCompanyActivity popupCompanyActivity = new PopupCompanyActivity();
 //    groceriesDA access;
 
 
@@ -75,7 +75,7 @@ public class RecyclerViewSearchAdapter extends RecyclerView.Adapter<RecyclerView
                     Button button = dialogview.findViewById(R.id.c_add);
                     builder.setView(dialogview);
                     builder.setCancelable(true);
-                    builder.show();
+                    AlertDialog ad = builder.show();
                     button.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
@@ -85,6 +85,7 @@ public class RecyclerViewSearchAdapter extends RecyclerView.Adapter<RecyclerView
                             SearchActivity.access.addToFridge2(textView.getText().toString(),a ,bdate.getText().toString(),edate.getText().toString(),company.getText().toString());
                             SearchActivity.access.closeDB();
                             Toast.makeText(cnt.getApplicationContext(), textView.getText().toString() + " به یخچال شما اضافه شد", Toast.LENGTH_SHORT).show();
+                            ad.cancel();
                         }
                     });
 
@@ -101,7 +102,7 @@ public class RecyclerViewSearchAdapter extends RecyclerView.Adapter<RecyclerView
                     Button button = dialogview.findViewById(R.id.n_add);
                     builder.setView(dialogview);
                     builder.setCancelable(true);
-                    builder.show();
+                    AlertDialog ad = builder.show();
                     button.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
@@ -112,6 +113,7 @@ public class RecyclerViewSearchAdapter extends RecyclerView.Adapter<RecyclerView
                             System.out.println(mID[position]);
                             SearchActivity.access.closeDB();
                             Toast.makeText(cnt.getApplicationContext(), textView.getText().toString() + " به یخچال شما اضافه شد", Toast.LENGTH_SHORT).show();
+                            ad.cancel();
                         }
                     });
 
@@ -134,14 +136,12 @@ public class RecyclerViewSearchAdapter extends RecyclerView.Adapter<RecyclerView
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView myTextView;
-        ImageView imageView;
         LinearLayout linearLayout;
 
         ViewHolder(View itemView) {
             super(itemView);
             myTextView = itemView.findViewById(R.id.searchItems);
-            //myTextView.setBackgroundResource(R.drawable.cabbage);
-            linearLayout = itemView.findViewById(R.id.selective);
+            linearLayout = itemView.findViewById(R.id.selective_search);
             itemView.setOnClickListener(this);
         }
 

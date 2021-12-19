@@ -15,7 +15,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Recipe coming soon..."
+            android:text="Shopping List coming soon..."
             android:textAlignment="center"
             android:layout_marginTop="50dp"
             android:textSize="20dp"

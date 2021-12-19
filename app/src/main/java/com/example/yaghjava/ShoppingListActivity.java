@@ -2,7 +2,6 @@ package com.example.yaghjava;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
@@ -12,10 +11,9 @@ import android.widget.ImageView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.yaghjava.R;
 import com.example.yaghjava.dataBase.groceriesDA;
 
-public class RecipeActivity extends AppCompatActivity {
+public class ShoppingListActivity extends AppCompatActivity {
 
     groceriesDA access = new groceriesDA(this);
     ImageView imageView;
@@ -24,7 +22,7 @@ public class RecipeActivity extends AppCompatActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.recipe_activity);
+        setContentView(R.layout.shoppinglist_activity);
 
 
         //Bottom Menu OnClick Functions To Change Pages
@@ -33,7 +31,7 @@ public class RecipeActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(RecipeActivity.this, FridgeActivity.class);
+                Intent intent = new Intent(ShoppingListActivity.this, FridgeActivity.class);
                 startActivity(intent);
                 finish();
                 overridePendingTransition(0, 0);
@@ -44,7 +42,7 @@ public class RecipeActivity extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(RecipeActivity.this, SettingsActivity.class);
+                Intent intent = new Intent(ShoppingListActivity.this, SettingsActivity.class);
                 startActivity(intent);
                 finish();
                 overridePendingTransition(0, 0);
@@ -56,7 +54,7 @@ public class RecipeActivity extends AppCompatActivity {
 
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if(keyCode == KeyEvent.KEYCODE_BACK){
-            Intent intent = new Intent(RecipeActivity.this, FridgeActivity.class);
+            Intent intent = new Intent(ShoppingListActivity.this, FridgeActivity.class);
             startActivity(intent);
             finish();
             overridePendingTransition(0, 0);

@@ -7,9 +7,12 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="Primary">#FF76FFEA</color>
-    <color name="PrimaryDark">#2EDDC1</color>
-    <color name="MenuDeselect">#DCDCDC</color>
+<!--    <color name="Primary">#FF76FFEA</color>-->
+<!--    <color name="PrimaryDark">#2EDDC1</color>-->
+    <color name="PrimaryDark">#181E02</color>
+    <color name="Primary">#181E02</color>
+<!--    <color name="MenuDeselect">#DCDCDC</color>-->
+    <color name="MenuDeselect">#4f6a36</color>
 
 
 </resources>
