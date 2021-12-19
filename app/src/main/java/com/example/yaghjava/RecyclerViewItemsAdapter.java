@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class RecyclerViewItemsAdapter extends RecyclerView.Adapter<RecyclerViewItemsAdapter.ViewHolder> {
 
+    private int[] mID;
     private String[] mData;
     private ItemClickListener mClickListener;
     Context cnt;
@@ -28,7 +29,8 @@ public class RecyclerViewItemsAdapter extends RecyclerView.Adapter<RecyclerViewI
     private String[] itemcount;
 
     // data is passed into the constructor
-    RecyclerViewItemsAdapter(Context context, String[] data, Bitmap[] pic, String[] ItemAmount) {
+    RecyclerViewItemsAdapter(Context context, int[] ID ,String[] data, Bitmap[] pic, String[] ItemAmount) {
+        this.mID = ID;
         this.mData = data;
         this.cnt = context;
         this.pic = pic;

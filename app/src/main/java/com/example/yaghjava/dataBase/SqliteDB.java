@@ -35,6 +35,12 @@ public class SqliteDB extends SQLiteOpenHelper {
     public static final String F_TYPE = "f_type";
     public static final String F_IMAGE = "f_image";
 
+    public static final String TABLE_SHOP= "shop";
+    public static final String S_ID = "s_id";
+    public static final String S_NAME = "s_name";
+    public static final String S_AMOUNT = "s_amount";
+    public static final String S_IMAGE = "s_image";
+
 
 
 
@@ -68,6 +74,15 @@ public class SqliteDB extends SQLiteOpenHelper {
                 F_IMAGE + " BLOB )";
 
         sqLiteDatabase.execSQL(query1);
+
+        //shop table
+        String query2 = "CREATE TABLE IF NOT EXISTS " + TABLE_SHOP + " ( " +
+                S_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                S_NAME + " TEXT NOT NULL , " +
+                S_AMOUNT + " INTEGER DEFAULT NULL , " +
+                S_IMAGE + " BLOB )";
+
+        sqLiteDatabase.execSQL(query2);
 
 
 
