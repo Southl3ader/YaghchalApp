@@ -15,9 +15,9 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="آیا می خواهید آیتم را حذف کنید؟"
+        android:text="آیا می خواهید این محصول را حذف کنید؟"
         android:fontFamily="@font/vazir"
-        android:textSize="18dp"
+        android:textSize="16dp"
         android:textColor="#000"
         android:layout_marginBottom="20dp"/>
 

@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
     //Add Cereals to database
     public void addCereal(){
         access.insert("نان", "Cereal",imageToBytes(BitmapFactory.decodeResource(getResources(),R.drawable.bread)));
-//        access.insert("برنج", "Cereal",imageToBytes(BitmapFactory.decodeResource(getResources(),R.drawable.bread)));
+
 
 
 

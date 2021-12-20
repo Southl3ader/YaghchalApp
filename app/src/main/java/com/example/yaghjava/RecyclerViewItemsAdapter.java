@@ -52,6 +52,27 @@ public class RecyclerViewItemsAdapter extends RecyclerView.Adapter<RecyclerViewI
         holder.myTextView.setText(mData[position].toString());
         holder.ItemCountText.setText(itemcount[position].toString());
         holder.imageView.setImageBitmap(pic[position]);
+
+        holder.plus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FridgeActivity.access.openDB();
+                FridgeActivity.access.increase(mID[position]);
+                FridgeActivity.access.closeDB();
+                ((FridgeActivity)cnt).onResume();
+            }
+        });
+
+        holder.minus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FridgeActivity.access.openDB();
+                FridgeActivity.access.reduce(mID[position]);
+                FridgeActivity.access.closeDB();
+                ((FridgeActivity)cnt).onResume();
+            }
+        });
+
         holder.linearLayout.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
@@ -72,8 +93,6 @@ public class RecyclerViewItemsAdapter extends RecyclerView.Adapter<RecyclerViewI
                         FridgeActivity.access.closeDB();
                         Toast.makeText(cnt.getApplicationContext(), mData[position] + " از یخچال شما حذف شد", Toast.LENGTH_SHORT).show();
                         ad.cancel();
-                        notifyItemRemoved(position);
-                        notifyItemRangeChanged(position,getItemCount());
                         ((FridgeActivity)cnt).onResume();
 
                     }
@@ -102,12 +121,16 @@ public class RecyclerViewItemsAdapter extends RecyclerView.Adapter<RecyclerViewI
         TextView ItemCountText;
         ImageView imageView;
         LinearLayout linearLayout;
+        TextView plus;
+        TextView minus;
         ViewHolder(View itemView) {
             super(itemView);
             myTextView = itemView.findViewById(R.id.groceries);
             ItemCountText = itemView.findViewById(R.id.groceries_count);
             imageView = itemView.findViewById(R.id.img);
             linearLayout = itemView.findViewById(R.id.selective_items);
+            plus = itemView.findViewById(R.id.groceries_add);
+            minus = itemView.findViewById(R.id.groceries_remove);
             itemView.setOnClickListener(this);
         }
 
