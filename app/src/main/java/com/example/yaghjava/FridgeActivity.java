@@ -170,6 +170,8 @@ public class FridgeActivity extends AppCompatActivity {
         RecyclerView recyclerViewProt = findViewById(R.id.protein);
         RecyclerView recyclerViewCer = findViewById(R.id.cereals);
         RecyclerView recyclerViewFruit = findViewById(R.id.fruit);
+        RecyclerView recyclerViewOthers = findViewById(R.id.others);
+
 
         int numberOfColumns = 4;
 
@@ -178,6 +180,7 @@ public class FridgeActivity extends AppCompatActivity {
         recyclerViewProt.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
         recyclerViewCer.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
         recyclerViewFruit.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
+        recyclerViewOthers.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
 
         RecyclerViewItemsAdapter adapterVeg = new RecyclerViewItemsAdapter(this, vegID ,vegetables, vegImage, vegAmount);
         recyclerViewVeg.setAdapter(adapterVeg);
@@ -188,7 +191,9 @@ public class FridgeActivity extends AppCompatActivity {
         RecyclerViewItemsAdapter adapterCer = new RecyclerViewItemsAdapter(this, cerID ,cereals, cerImage, cerAmount);
         recyclerViewCer.setAdapter(adapterCer);
         RecyclerViewItemsAdapter adapterFruit = new RecyclerViewItemsAdapter(this, fruitID ,fruits, fruitImage, fruitAmount);
-        recyclerViewCer.setAdapter(adapterFruit);
+        recyclerViewFruit.setAdapter(adapterFruit);
+        RecyclerViewItemsAdapter adapterOthers = new RecyclerViewItemsAdapter(this, otherID ,others, othersImage, othersAmount);
+        recyclerViewOthers.setAdapter(adapterOthers);
 
     }
 

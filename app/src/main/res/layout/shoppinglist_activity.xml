@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center">
+    android:layout_gravity="center"
+    android:background="#8ab045">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,7 +21,7 @@
             android:layout_marginTop="50dp"
             android:textSize="20dp"
             android:textStyle="bold"
-            android:textColor="#1a1a9a"
+            android:textColor="#000000"
             android:layout_gravity="center"/>
 
 
@@ -45,7 +46,7 @@
         android:layout_height="78dp"
         android:layout_gravity="bottom"
         android:background="@drawable/roundmenu"
-        android:backgroundTint="#A1a1a1"
+        android:backgroundTint="#70ffffff"
         android:gravity="bottom"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent">
