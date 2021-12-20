@@ -67,8 +67,15 @@ public class RecyclerViewItemsAdapter extends RecyclerView.Adapter<RecyclerViewI
                 yes.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        //Toast.makeText(cnt.getApplicationContext(), textView.getText().toString() + " از یخچال شما حذف شد", Toast.LENGTH_SHORT).show();
+                        FridgeActivity.access.openDB();
+                        FridgeActivity.access.remove(mID[position]);
+                        FridgeActivity.access.closeDB();
+                        Toast.makeText(cnt.getApplicationContext(), mData[position] + " از یخچال شما حذف شد", Toast.LENGTH_SHORT).show();
                         ad.cancel();
+                        notifyItemRemoved(position);
+                        notifyItemRangeChanged(position,getItemCount());
+                        ((FridgeActivity)cnt).onResume();
+
                     }
                 });
                 no.setOnClickListener(new View.OnClickListener() {

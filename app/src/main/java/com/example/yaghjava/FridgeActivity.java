@@ -18,14 +18,65 @@ import com.example.yaghjava.model.groceriesModel;
 import java.util.ArrayList;
 
 public class FridgeActivity extends AppCompatActivity {
-    groceriesDA access = new groceriesDA(this);
+    static groceriesDA access ;
     ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        access = new groceriesDA(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fridge);
 
+        show();
+
+
+        //Bottom Menu OnClick Functions To Change Pages
+
+        Button button = (Button) findViewById(R.id.shoppingList);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(FridgeActivity.this, ShoppingListActivity.class);
+                startActivity(intent);
+                finish();
+                overridePendingTransition(0, 0);
+            }
+        });
+
+        Button button1 = (Button) findViewById(R.id.settings);
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(FridgeActivity.this, SettingsActivity.class);
+                startActivity(intent);
+                finish();
+                overridePendingTransition(0, 0);
+            }
+        });
+
+
+        //OnClick Function For SearchBar
+
+        EditText editText = (EditText) findViewById(R.id.searchbar);
+        editText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(FridgeActivity.this, SearchActivity.class);
+                startActivity(intent);
+                finish();
+                overridePendingTransition(0, 0);
+            }
+        });
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        show();
+    }
+
+    public void show(){
         access.openDB();
 
         ArrayList<groceriesModel> Veg = (ArrayList<groceriesModel>) access.getAllVeg();
@@ -139,45 +190,6 @@ public class FridgeActivity extends AppCompatActivity {
         RecyclerViewItemsAdapter adapterFruit = new RecyclerViewItemsAdapter(this, fruitID ,fruits, fruitImage, fruitAmount);
         recyclerViewCer.setAdapter(adapterFruit);
 
-
-
-        //Bottom Menu OnClick Functions To Change Pages
-
-        Button button = (Button) findViewById(R.id.shoppingList);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(FridgeActivity.this, ShoppingListActivity.class);
-                startActivity(intent);
-                finish();
-                overridePendingTransition(0, 0);
-            }
-        });
-
-        Button button1 = (Button) findViewById(R.id.settings);
-        button1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(FridgeActivity.this, SettingsActivity.class);
-                startActivity(intent);
-                finish();
-                overridePendingTransition(0, 0);
-            }
-        });
-
-
-        //OnClick Function For SearchBar
-
-        EditText editText = (EditText) findViewById(R.id.searchbar);
-        editText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(FridgeActivity.this, SearchActivity.class);
-                startActivity(intent);
-                finish();
-                overridePendingTransition(0, 0);
-            }
-        });
-
     }
+
 }

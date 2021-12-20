@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,7 +70,6 @@ public class RecyclerViewSearchAdapter extends RecyclerView.Adapter<RecyclerView
                     TextView textView =  dialogview.findViewById(R.id.c_name);
                     textView.setText(holder.myTextView.getText().toString());
                     EditText amount = dialogview.findViewById(R.id.c_amount);
-                    String S = amount.getText().toString();
                     EditText bdate = dialogview.findViewById(R.id.c_bdate);
                     EditText edate = dialogview.findViewById(R.id.c_edate);
                     EditText company = dialogview.findViewById(R.id.c_company);
@@ -80,18 +80,18 @@ public class RecyclerViewSearchAdapter extends RecyclerView.Adapter<RecyclerView
                     button.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            if(S.matches("")){
+                            if(TextUtils.isEmpty(amount.getText().toString())){
                                 Toast.makeText(cnt.getApplicationContext(), "لطفا تعداد را تعیین کنید", Toast.LENGTH_SHORT).show();
                             }
                             else {
-
+                                String S = amount.getText().toString();
                                 int a =Integer.parseInt(S);
                                 SearchActivity.access.openDB();
                                 SearchActivity.access.addToFridge2(textView.getText().toString(),a ,bdate.getText().toString(),edate.getText().toString(),company.getText().toString());
                                 SearchActivity.access.closeDB();
                                 Toast.makeText(cnt.getApplicationContext(), textView.getText().toString() + " به یخچال شما اضافه شد", Toast.LENGTH_SHORT).show();
+                                ad.cancel();
                             }
-                            ad.cancel();
                         }
                     });
 
@@ -103,7 +103,6 @@ public class RecyclerViewSearchAdapter extends RecyclerView.Adapter<RecyclerView
                     TextView textView =  dialogview.findViewById(R.id.n_name);
                     textView.setText(holder.myTextView.getText().toString());
                     EditText amount = dialogview.findViewById(R.id.n_amount);
-                    S = amount.getText().toString();
                     EditText bdate = dialogview.findViewById(R.id.n_bdate);
                     EditText edate = dialogview.findViewById(R.id.n_edate);
                     Button button = dialogview.findViewById(R.id.n_add);
@@ -113,20 +112,21 @@ public class RecyclerViewSearchAdapter extends RecyclerView.Adapter<RecyclerView
                     button.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            if(S.matches("")){
+                            if(TextUtils.isEmpty(amount.getText().toString())){
                                 Toast.makeText(cnt.getApplicationContext(), "لطفا تعداد را تعیین کنید", Toast.LENGTH_SHORT).show();
 
                             }
                             else {
+                                S = amount.getText().toString();
                                 int a =Integer.parseInt(S);
                                 SearchActivity.access.openDB();
                                 SearchActivity.access.addToFridge2(textView.getText().toString(),a ,bdate.getText().toString(),edate.getText().toString(),null);
                                 System.out.println(mID[position]);
                                 SearchActivity.access.closeDB();
                                 Toast.makeText(cnt.getApplicationContext(), textView.getText().toString() + " به یخچال شما اضافه شد", Toast.LENGTH_SHORT).show();
+                                ad.cancel();
                             }
 
-                            ad.cancel();
                         }
                     });
 
