@@ -6,6 +6,7 @@
         <entry key="..\:/AndroidStudioProjects/YaghchalApp1/app/src/main/res/drawable/change_color.xml" value="0.1125" />
         <entry key="..\:/AndroidStudioProjects/YaghchalApp1/app/src/main/res/drawable/frame.xml" value="0.2203125" />
         <entry key="..\:/AndroidStudioProjects/YaghchalApp1/app/src/main/res/drawable/ic_add.xml" value="0.2203125" />
+        <entry key="..\:/AndroidStudioProjects/YaghchalApp1/app/src/main/res/drawable/ic_fridge.xml" value="0.2203125" />
         <entry key="..\:/AndroidStudioProjects/YaghchalApp1/app/src/main/res/drawable/ic_minus_sign_of_a_line_in_horizontal_position_svgrepo_com.xml" value="0.2203125" />
         <entry key="..\:/AndroidStudioProjects/YaghchalApp1/app/src/main/res/drawable/ic_plus.xml" value="0.2203125" />
         <entry key="..\:/AndroidStudioProjects/YaghchalApp1/app/src/main/res/drawable/ic_recipe.xml" value="0.2203125" />
@@ -14,6 +15,7 @@
         <entry key="..\:/AndroidStudioProjects/YaghchalApp1/app/src/main/res/drawable/ic_search.xml" value="0.2203125" />
         <entry key="..\:/AndroidStudioProjects/YaghchalApp1/app/src/main/res/drawable/ic_settings.xml" value="0.2203125" />
         <entry key="..\:/AndroidStudioProjects/YaghchalApp1/app/src/main/res/drawable/ic_settings_unselect.xml" value="0.2203125" />
+        <entry key="..\:/AndroidStudioProjects/YaghchalApp1/app/src/main/res/drawable/ic_shop.xml" value="0.2203125" />
         <entry key="..\:/AndroidStudioProjects/YaghchalApp1/app/src/main/res/drawable/ic_stove.xml" value="0.2203125" />
         <entry key="..\:/AndroidStudioProjects/YaghchalApp1/app/src/main/res/drawable/ic_trash.xml" value="0.2203125" />
         <entry key="..\:/AndroidStudioProjects/YaghchalApp1/app/src/main/res/drawable/search_box.xml" value="0.2203125" />
@@ -21,6 +23,7 @@
         <entry key="..\:/AndroidStudioProjects/YaghchalApp1/app/src/main/res/layout/activity_fridge.xml" value="0.2" />
         <entry key="..\:/AndroidStudioProjects/YaghchalApp1/app/src/main/res/layout/activity_main.xml" value="0.19293478260869565" />
         <entry key="..\:/AndroidStudioProjects/YaghchalApp1/app/src/main/res/layout/delete_items.xml" value="0.15489130434782608" />
+        <entry key="..\:/AndroidStudioProjects/YaghchalApp1/app/src/main/res/layout/details_popup.xml" value="0.18206521739130435" />
         <entry key="..\:/AndroidStudioProjects/YaghchalApp1/app/src/main/res/layout/popup_company.xml" value="0.14673913043478262" />
         <entry key="..\:/AndroidStudioProjects/YaghchalApp1/app/src/main/res/layout/popup_no_company.xml" value="0.14673913043478262" />
         <entry key="..\:/AndroidStudioProjects/YaghchalApp1/app/src/main/res/layout/recipe_activity.xml" value="0.19293478260869565" />
@@ -48,7 +51,6 @@
         <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/drawable-v24/ic_clipboard_unselect.xml" value="0.15" />
         <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/drawable/circle_drawable..xml" value="0.2712820512820513" />
         <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/drawable/frame.xml" value="0.15" />
-        <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/drawable/fridge_popup.xml" value="0.2712820512820513" />
         <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/drawable/ic_clipboard.xml" value="0.15" />
         <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/drawable/ic_clipboard_unselect.xml" value="0.15" />
         <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/drawable/ic_fridge_unselect.xml" value="0.2611111111111111" />
@@ -58,20 +60,12 @@
         <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/drawable/ic_settings-unselect.xml" value="0.2611111111111111" />
         <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/drawable/ic_settings.xml" value="0.15" />
         <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/drawable/ic_settings_unselect.xml" value="0.15" />
-        <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/drawable/ic_shop.xml" value="0.2712820512820513" />
-        <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/drawable/ic_shopping_cart.xml" value="0.2712820512820513" />
-        <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/drawable/ic_shopping_cart_unselect.xml" value="0.2712820512820513" />
         <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/drawable/ic_shoppinglist.xml" value="0.1" />
         <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/drawable/ic_stove.xml" value="0.15" />
         <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/drawable/item_count_background.xml" value="0.2712820512820513" />
         <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/drawable/roundmenu.xml" value="0.2712820512820513" />
-        <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/drawable/roundwindow.xml" value="0.2712820512820513" />
-        <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/drawable/search_box.xml" value="0.2712820512820513" />
-        <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/layout/activity_delete_items.xml" value="0.23097826086956522" />
         <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/layout/activity_fridge.xml" value="0.2994791666666667" />
         <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/layout/activity_main.xml" value="0.13020833333333334" />
-        <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/layout/details_popup.xml" value="0.4" />
-        <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/layout/fridge_popup.xml" value="0.23278985507246377" />
         <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/layout/popup_company.xml" value="0.2545289855072464" />
         <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/layout/popup_no_company.xml" value="0.2545289855072464" />
         <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/layout/recipe_activity.xml" value="0.23369565217391305" />
@@ -79,7 +73,6 @@
         <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/layout/recyclerview_search.xml" value="0.13385416666666666" />
         <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/layout/search_activity.xml" value="0.23369565217391305" />
         <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/layout/settings_activity.xml" value="0.23369565217391305" />
-        <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/layout/shoppinglist_activity.xml" value="0.23097826086956522" />
         <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/layout/white_circle_drawable.xml" value="0.2504528985507246" />
         <entry key="..\:/Data/PGU/YaghChal/YaghJava/app/src/main/res/drawable/ic_recipe.xml" value="0.2755208333333333" />
         <entry key="..\:/Data/PGU/YaghChal/YaghJava/app/src/main/res/drawable/roundmenu.xml" value="0.26145833333333335" />
