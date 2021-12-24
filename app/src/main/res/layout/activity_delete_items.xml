@@ -10,7 +10,8 @@
     android:layout_gravity="center"
     android:gravity="center"
     android:padding="20dp"
-    android:background="#708ab045">
+    android:background="@drawable/roundwindow"
+    android:backgroundTint="#b4f4fb">
 
     <TextView
         android:layout_width="wrap_content"
@@ -33,7 +34,7 @@
             android:layout_width="80dp"
             android:layout_height="60dp"
             android:layout_marginLeft="20dp"
-            android:backgroundTint="#4f6a36"
+            android:backgroundTint="#72ABE8"
             android:gravity="center"
             android:text="بله"
             android:textSize="18dp"
@@ -43,7 +44,7 @@
             android:id="@+id/no"
             android:layout_width="80dp"
             android:layout_height="60dp"
-            android:backgroundTint="#4f6a36"
+            android:backgroundTint="#72ABE8"
             android:gravity="center"
             android:text="خیر"
             android:textSize="18dp"

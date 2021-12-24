@@ -15,7 +15,7 @@
         android:layoutDirection="rtl"
         android:textDirection="rtl"
         tools:ignore="MissingConstraints"
-        android:backgroundTint="#8ab045">
+        android:backgroundTint="#C7F9FF">
 
         <EditText
             android:id="@+id/searchbar"
@@ -199,7 +199,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_weight="1"
             android:backgroundTint="#A1A1A1"
-            android:drawableTop="@drawable/ic_shop"
+            android:drawableTop="@drawable/ic_shopping_cart_unselect"
             android:drawableTint="@color/MenuDeselect"
             android:padding="5dp"
             android:fontFamily="@font/vazir"
@@ -219,14 +219,14 @@
             android:backgroundTint="#A1A1A1"
             android:clickable="false"
             android:drawableTop="@drawable/ic_fridge"
-            android:drawableTint="@color/Primary"
+            android:drawableTint="@color/MenuSelect"
             android:fontFamily="@font/vazir_bold"
-            android:textSize="13.5dp"
+            android:textSize="13dp"
             android:padding="5dp"
             android:text="یقچال"
             android:textAlignment="center"
             android:textAllCaps="false"
-            android:textColor="@color/PrimaryDark"
+            android:textColor="@color/MenuSelect"
             app:cornerRadius="15dp"></Button>
 
     </LinearLayout>

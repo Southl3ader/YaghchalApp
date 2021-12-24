@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="300dp"
+    android:layout_height="450dp"
+    tools:context=".PopupCompanyActivity"
+    android:orientation="vertical"
+    android:textDirection="rtl"
+    android:layoutDirection="rtl"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:padding="20dp"
+    android:backgroundTint="#b4f4fb"
+    android:background="@drawable/roundwindow">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/editbutton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="left"
+            android:background="#00FFFFFF"
+            android:drawableTint="#7a7a7a"
+            android:drawableTop="@drawable/ic_edit"
+            android:gravity="left" />
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/fridgepop_image"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:id="@+id/fridgepop_name"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:fontFamily="@font/vazir_bold"
+        android:textSize="20dp"
+        android:layout_marginBottom="20dp"
+        android:textAlignment="center"/>
+
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="130dp"
+            android:textAlignment="center"
+            android:layout_marginTop="7dp"
+            android:fontFamily="@font/vazir"
+            android:layout_height="40dp"
+            android:text="مقدار" />
+
+        <EditText
+            android:id="@+id/fridgepop_amount"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_gravity="left"
+            android:ems="10"
+            android:fontFamily="@font/vazir"
+            android:inputType="number"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/frame"
+            android:textAlignment="center"
+            tools:ignore="RtlCompat"
+            />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="130dp"
+            android:textAlignment="center"
+            android:layout_marginTop="7dp"
+            android:fontFamily="@font/vazir"
+            android:layout_height="40dp"
+            android:text="تاریخ خرید" />
+
+        <EditText
+            android:id="@+id/fridgepop_bdate"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_gravity="left"
+            android:ems="10"
+            android:fontFamily="@font/vazir"
+            android:inputType="number"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/frame"
+            android:textAlignment="center"
+            tools:ignore="RtlCompat"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="130dp"
+            android:textAlignment="center"
+            android:layout_marginTop="7dp"
+            android:fontFamily="@font/vazir"
+            android:layout_height="40dp"
+            android:text="تاریخ انقضا" />
+
+        <EditText
+            android:id="@+id/fridgepop_edate"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_gravity="left"
+            android:ems="10"
+            android:fontFamily="@font/vazir"
+            android:inputType="number"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/frame"
+            android:textAlignment="center"
+            tools:ignore="RtlCompat"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="130dp"
+            android:textAlignment="center"
+            android:layout_marginTop="7dp"
+            android:fontFamily="@font/vazir"
+            android:layout_height="40dp"
+            android:text="شرکت" />
+
+        <EditText
+            android:id="@+id/fridgepop_company"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_gravity="left"
+            android:ems="10"
+            android:fontFamily="@font/vazir"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/frame"
+            android:textAlignment="center"
+            tools:ignore="RtlCompat"
+            />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/fridgepop_savechange"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:fontFamily="@font/vazir"
+        android:text="ذخیره تغییرات"
+        android:backgroundTint="#72ABE8"
+        />
+
+</LinearLayout>

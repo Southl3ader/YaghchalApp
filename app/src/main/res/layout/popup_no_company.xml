@@ -11,7 +11,8 @@
     android:layout_gravity="center"
     android:gravity="center"
     android:padding="20dp"
-    android:background="#708ab045">
+    android:backgroundTint="#b4f4fb"
+    android:background="@drawable/roundwindow">
 
     <ImageView
         android:id="@+id/n_image"
@@ -23,7 +24,8 @@
         android:id="@+id/n_name"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:fontFamily="@font/vazir"
+        android:fontFamily="@font/vazir_bold"
+        android:textSize="20dp"
         android:layout_marginBottom="20dp"
         android:textAlignment="center"/>
 
@@ -69,7 +71,8 @@
         android:layout_height="60dp"
         android:fontFamily="@font/vazir"
         android:text="اضافه کردن"
-        android:backgroundTint="#4f6a36"/>
+        android:backgroundTint="#72ABE8"
+        />
 
 <!--    <Button-->
 <!--        android:id="@+id/n_shlist"-->

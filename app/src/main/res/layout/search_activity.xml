@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:background="#8ab045">
+    android:background="#FFFFFF"
+    android:backgroundTint="#C7F9FF">
 
     <LinearLayout
         android:layout_width="match_parent"

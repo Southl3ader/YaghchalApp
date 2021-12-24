@@ -31,13 +31,13 @@
         android:layout_height="40dp"
         android:layout_marginLeft="20dp"
         android:background="@drawable/ic_fridge"
-        android:backgroundTint="#4f6a36"/>
+        android:backgroundTint="@color/MenuSelect"/>
 
     <ImageButton
         android:id="@+id/addToShoppinglist"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:background="@drawable/ic_shop"
-        android:backgroundTint="#4f6a36"/>
+        android:background="@drawable/ic_shopping_cart"
+        android:backgroundTint="@color/MenuSelect"/>
 
 </LinearLayout>

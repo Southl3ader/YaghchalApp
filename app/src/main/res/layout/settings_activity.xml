@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:background="#8ab045">
+    android:background="#FFFFFF"
+    android:backgroundTint="#C7F9FF">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -63,14 +64,14 @@
             android:layout_weight="1"
             android:backgroundTint="#A1A1A1"
             android:drawableTop="@drawable/ic_settings"
-            android:drawableTint="@color/Primary"
+            android:drawableTint="@color/MenuSelect"
             android:fontFamily="@font/vazir_bold"
             android:textSize="13.5dp"
             android:padding="5dp"
             android:text="تنظیمات"
             android:clickable="false"
             android:textAllCaps="false"
-            android:textColor="@color/PrimaryDark"
+            android:textColor="@color/MenuSelect"
             app:cornerRadius="15dp"></Button>
 
         <Button
@@ -82,7 +83,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_weight="1"
             android:backgroundTint="#A1A1A1"
-            android:drawableTop="@drawable/ic_shop"
+            android:drawableTop="@drawable/ic_shopping_cart_unselect"
             android:drawableTint="@color/MenuDeselect"
             android:padding="5dp"
             android:fontFamily="@font/vazir"

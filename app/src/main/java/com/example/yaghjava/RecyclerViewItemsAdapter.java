@@ -2,14 +2,11 @@ package com.example.yaghjava;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.util.Log;
-import android.view.GestureDetector;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -23,18 +20,26 @@ public class RecyclerViewItemsAdapter extends RecyclerView.Adapter<RecyclerViewI
 
     private int[] mID;
     private String[] mData;
+    private String mType;
+    private String[] BDate;
+    private String[] EDate;
+    private String[] company;
     private ItemClickListener mClickListener;
     Context cnt;
     Bitmap[] pic;
     private String[] itemcount;
 
     // data is passed into the constructor
-    RecyclerViewItemsAdapter(Context context, int[] ID ,String[] data, Bitmap[] pic, String[] ItemAmount) {
+    RecyclerViewItemsAdapter(Context context, int[] ID ,String[] data, String[] BDate, String[] EDate, String[] company, Bitmap[] pic, String[] ItemAmount, String type) {
         this.mID = ID;
         this.mData = data;
+        this.BDate = BDate;
+        this.EDate = EDate;
+        this.company = company;
         this.cnt = context;
         this.pic = pic;
         this.itemcount = ItemAmount;
+        this.mType = type;
     }
 
     // inflates the cell layout from xml when needed
@@ -70,6 +75,113 @@ public class RecyclerViewItemsAdapter extends RecyclerView.Adapter<RecyclerViewI
                 FridgeActivity.access.reduce(mID[position]);
                 FridgeActivity.access.closeDB();
                 ((FridgeActivity)cnt).onResume();
+            }
+        });
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //For Items With Company
+                if (mType.equals("Dairy") || mType.equals("Protein")) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(view.getRootView().getContext());
+                    View dialogview = LayoutInflater.from(view.getRootView().getContext()).inflate(R.layout.details_popup, null);
+                    ImageView imageView = dialogview.findViewById(R.id.fridgepop_image);
+                    imageView.setImageBitmap(pic[position]);
+                    TextView textView = dialogview.findViewById(R.id.fridgepop_name);
+                    textView.setText(holder.myTextView.getText().toString());
+                    EditText amount = dialogview.findViewById(R.id.fridgepop_amount);
+                    amount.setText(holder.ItemCountText.getText());
+                    amount.setEnabled(false);
+                    Button editbutton = dialogview.findViewById(R.id.editbutton);
+                    EditText bdate = dialogview.findViewById(R.id.fridgepop_bdate);
+                    bdate.setText(BDate[position]);
+                    bdate.setEnabled(false);
+                    EditText edate = dialogview.findViewById(R.id.fridgepop_edate);
+                    edate.setText(EDate[position]);
+                    edate.setEnabled(false);
+                    EditText companytext = dialogview.findViewById(R.id.fridgepop_company);
+                    companytext.setText(company[position]);
+                    companytext.setEnabled(false);
+                    Button button = dialogview.findViewById(R.id.fridgepop_savechange);
+                    builder.setView(dialogview);
+                    builder.setCancelable(true);
+                    AlertDialog fridgedialog = builder.show();
+
+                    //Enabling Edit
+                    editbutton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            amount.setEnabled(true);
+                            bdate.setEnabled(true);
+                            edate.setEnabled(true);
+                            companytext.setEnabled(true);
+                        }
+                    });
+
+                    //Saving Edited Fields
+                    button.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            String convert = amount.getText().toString();
+                            int amountToint = Integer.parseInt(convert);
+                            FridgeActivity.access.openDB();
+                            FridgeActivity.access.updateAttributes(mID[position], amountToint, bdate.getText().toString(), edate.getText().toString(), companytext.getText().toString());
+                            FridgeActivity.access.closeDB();
+                            fridgedialog.cancel();
+                            ((FridgeActivity) cnt).onResume();
+
+                        }
+                    });
+                }
+                //For Items Without Company
+                else{
+                    AlertDialog.Builder builder = new AlertDialog.Builder(view.getRootView().getContext());
+                    View dialogview = LayoutInflater.from(view.getRootView().getContext()).inflate(R.layout.details_popup_company, null);
+                    ImageView imageView = dialogview.findViewById(R.id.fridgepop_image);
+                    imageView.setImageBitmap(pic[position]);
+                    TextView textView = dialogview.findViewById(R.id.fridgepop_name);
+                    textView.setText(holder.myTextView.getText().toString());
+                    EditText amount = dialogview.findViewById(R.id.fridgepop_amount);
+                    amount.setText(holder.ItemCountText.getText());
+                    amount.setEnabled(false);
+                    Button editbutton = dialogview.findViewById(R.id.editbutton);
+                    EditText bdate = dialogview.findViewById(R.id.fridgepop_bdate);
+                    bdate.setText(BDate[position]);
+                    bdate.setEnabled(false);
+                    EditText edate = dialogview.findViewById(R.id.fridgepop_edate);
+                    edate.setText(EDate[position]);
+                    edate.setEnabled(false);
+                    Button button = dialogview.findViewById(R.id.fridgepop_savechange);
+                    builder.setView(dialogview);
+                    builder.setCancelable(true);
+                    AlertDialog fridgedialog = builder.show();
+
+                    //Enabling Edit
+                    editbutton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            amount.setEnabled(true);
+                            bdate.setEnabled(true);
+                            edate.setEnabled(true);
+                        }
+                    });
+
+                    //Saving Edits
+                    button.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            String convert = amount.getText().toString();
+                            int amountToint = Integer.parseInt(convert);
+                            FridgeActivity.access.openDB();
+                            FridgeActivity.access.updateAttributes(mID[position], amountToint, bdate.getText().toString(), edate.getText().toString(), null);
+                            FridgeActivity.access.closeDB();
+                            fridgedialog.cancel();
+                            ((FridgeActivity) cnt).onResume();
+
+                        }
+                    });
+                }
+
             }
         });
 
@@ -137,6 +249,7 @@ public class RecyclerViewItemsAdapter extends RecyclerView.Adapter<RecyclerViewI
         @Override
         public void onClick(View view) {
             if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
+
         }
     }
 

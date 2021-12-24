@@ -12,7 +12,8 @@
     <color name="PrimaryDark">#181E02</color>
     <color name="Primary">#181E02</color>
 <!--    <color name="MenuDeselect">#DCDCDC</color>-->
-    <color name="MenuDeselect">#4f6a36</color>
+    <color name="MenuDeselect">#6E6E6E</color>
+    <color name="MenuSelect">#3695FB</color>
 
 
 </resources>
