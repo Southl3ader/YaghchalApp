@@ -199,7 +199,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_weight="1"
             android:backgroundTint="#A1A1A1"
-            android:drawableTop="@drawable/ic_clipboard_unselect"
+            android:drawableTop="@drawable/ic_shop"
             android:drawableTint="@color/MenuDeselect"
             android:padding="5dp"
             android:fontFamily="@font/vazir"

@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -59,7 +60,13 @@ public class RecyclerViewSearchAdapter extends RecyclerView.Adapter<RecyclerView
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.myTextView.setText(mData[position].toString());
 //        holder.imageView.setImageBitmap(pic[position]);
-        holder.linearLayout.setOnClickListener(new View.OnClickListener() {
+        holder.addToShoppingList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        holder.addToFridge.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(mType[position].equals("Dairy" ) || mType[position].equals("Protein") ){
@@ -150,11 +157,15 @@ public class RecyclerViewSearchAdapter extends RecyclerView.Adapter<RecyclerView
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView myTextView;
         LinearLayout linearLayout;
+        ImageButton addToFridge;
+        ImageButton addToShoppingList;
 
         ViewHolder(View itemView) {
             super(itemView);
             myTextView = itemView.findViewById(R.id.searchItems);
             linearLayout = itemView.findViewById(R.id.selective_search);
+            addToFridge = itemView.findViewById(R.id.addToFridge);
+            addToShoppingList = itemView.findViewById(R.id.addToShoppinglist);
             itemView.setOnClickListener(this);
         }
 

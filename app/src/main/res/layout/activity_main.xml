@@ -8,7 +8,7 @@
     android:layout_centerInParent="true"
     android:gravity="center"
     android:orientation="vertical"
-    android:background="#A1a1a1">
+    android:background="#8ab045">
 
     <ImageView
         android:id="@+id/logo"

@@ -81,7 +81,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_weight="1"
             android:backgroundTint="#A1A1A1"
-            android:drawableTop="@drawable/ic_clipboard"
+            android:drawableTop="@drawable/ic_shop"
             android:drawableTint="@color/Primary"
             android:fontFamily="@font/vazir_bold"
             android:textSize="13.5dp"

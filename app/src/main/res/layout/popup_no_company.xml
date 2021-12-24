@@ -71,13 +71,13 @@
         android:text="اضافه کردن"
         android:backgroundTint="#4f6a36"/>
 
-    <Button
-        android:id="@+id/n_shlist"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:fontFamily="@font/vazir"
-        android:text="اضافه کردن به لیست خرید"
-        android:backgroundTint="#4f6a36"/>
+<!--    <Button-->
+<!--        android:id="@+id/n_shlist"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="60dp"-->
+<!--        android:fontFamily="@font/vazir"-->
+<!--        android:text="اضافه کردن به لیست خرید"-->
+<!--        android:backgroundTint="#4f6a36"/>-->
 
 
 </LinearLayout>

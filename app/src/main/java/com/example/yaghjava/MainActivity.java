@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         addDairies();
         addProtein();
         addCereal();
+        addFruit();
         access.closeDB();
 
         new CountDownTimer(2000, 1000) {
@@ -103,6 +104,15 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
+    }
+
+    //Add Fruits to database
+    public void addFruit(){
+        access.insert("سیب", "Fruit",imageToBytes(BitmapFactory.decodeResource(getResources(),R.drawable.apple)));
+        access.insert("انگور", "Fruit",imageToBytes(BitmapFactory.decodeResource(getResources(),R.drawable.grape)));
+        access.insert("توت فرنگی", "Fruit",imageToBytes(BitmapFactory.decodeResource(getResources(),R.drawable.strawberry)));
+        access.insert("هلو", "Fruit",imageToBytes(BitmapFactory.decodeResource(getResources(),R.drawable.peach)));
 
     }
 
