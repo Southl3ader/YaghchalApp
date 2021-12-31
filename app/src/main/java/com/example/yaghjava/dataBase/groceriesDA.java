@@ -45,6 +45,7 @@ public class groceriesDA {
         cv.put(SqliteDB.IMAGE,image);
 
         database.update(SqliteDB.TABLE_GROCERIES,cv,SqliteDB.NAME + " = '" + name + "'",null);
+
     }
 
     //add grocery to fridge
@@ -109,16 +110,6 @@ public class groceriesDA {
         String query = "UPDATE " + SqliteDB.TABLE_FRIDGE
                 + " SET " + SqliteDB.F_AMOUNT + " = " + SqliteDB.F_AMOUNT + " +1 "
                 + "WHERE " + SqliteDB.F_ID + " = " + id;
-        database.execSQL(query);
-    }
-
-
-    //Remove from fridge
-    public void changeAmount(String name, int amount, String BDate, String ExDate,String company, String type){
-        String query ="update " + SqliteDB.TABLE_FRIDGE
-                +" set " + SqliteDB.F_AMOUNT + " = " + amount + " , "
-                + " where " + SqliteDB.F_NAME + " = " + "'" + name + "'" + " and " + SqliteDB.F_BUY_DATE + " = " + "'" + BDate + "'" + " and " + SqliteDB.F_EXPIRE_DATE + " = " + "'" + ExDate + "'" + " and " + SqliteDB.F_COMPANY + " = " + "'" + company + "'" + " and " + SqliteDB.F_TYPE + " = " + "'" + type + "'";
-
         database.execSQL(query);
     }
 
@@ -349,6 +340,71 @@ public List<groceriesModel> getAllFruits(){
     }
 
     //Add to shopping list
+    public void addToShop(String input,int amount, String company){
+        String query ="insert into " + SqliteDB.TABLE_SHOP + " ( " + SqliteDB.S_NAME + " , " + SqliteDB.S_TYPE + " , " + SqliteDB.S_IMAGE + " )"
+                + " select " + SqliteDB.NAME + " , " + SqliteDB.TYPE + " , " + SqliteDB.IMAGE + " from " + SqliteDB.TABLE_GROCERIES
+                + " where " + SqliteDB.NAME + " = " + "'" + input + "'";
+
+        database.execSQL(query);
+        String query1 = "update " + SqliteDB.TABLE_SHOP
+                + " set " + SqliteDB.S_AMOUNT + " = " +  amount + " , "
+                + SqliteDB.S_COMPANY + " = " + "'" + company + "'"
+                + " where " + SqliteDB.S_ID + " in ( "
+                + " select " + SqliteDB.S_ID + " from " + SqliteDB.TABLE_SHOP
+                + " where " + SqliteDB.S_NAME + " = " + "'" + input + "'"
+                + " order by " + SqliteDB.S_ID + " desc limit 1)";
+        database.execSQL(query1);
+    }
+
+    //Add to fridge from shopping list
+    public void shopToFridge(int sID, String input,int amount, String buy, String ex, String company){
+        String query ="insert into " + SqliteDB.TABLE_FRIDGE + " ( " + SqliteDB.F_NAME + " , " + SqliteDB.F_TYPE + " , " + SqliteDB.F_IMAGE + " )"
+                + " select " + SqliteDB.NAME + " , " + SqliteDB.TYPE + " , " + SqliteDB.IMAGE + " from " + SqliteDB.TABLE_GROCERIES
+                + " where " + SqliteDB.NAME + " = " + "'" + input + "'";
+
+        database.execSQL(query);
+
+        String query1 = "update " + SqliteDB.TABLE_FRIDGE
+                + " set " + SqliteDB.F_AMOUNT + " = " +  amount + " , "
+                + SqliteDB.F_BUY_DATE + " = " + "'" + buy + "'" + " , "
+                + SqliteDB.F_EXPIRE_DATE + " = " + "'" + ex + "'" + " , "
+                + SqliteDB.F_COMPANY + " = " + "'" + company + "'"
+                + " where " + SqliteDB.F_ID + " in ( "
+                + " select " + SqliteDB.F_ID + " from " + SqliteDB.TABLE_FRIDGE
+                + " where " + SqliteDB.F_NAME + " = " + "'" + input + "'"
+                + " order by " + SqliteDB.F_ID + " desc limit 1)";
+        database.execSQL(query1);
+
+        String query2 = "DELETE FROM " + SqliteDB.TABLE_SHOP
+                + " WHERE " + SqliteDB.S_ID + " = " + sID;
+
+        database.execSQL(query2);
+
+    }
+
+    //Get all groceries in shopping list
+    public List<groceriesModel> getAllShop(){
+
+        List<groceriesModel> models = new ArrayList<>();
+        String getAllQuery = "select * from " + SqliteDB.TABLE_SHOP;
+        Cursor cursor = database.rawQuery(getAllQuery, null);
+
+        if (cursor.moveToFirst()){
+            do {
+                int id = cursor.getInt(0);
+                String name = cursor.getString(1);
+                int amount = cursor.getInt(2);
+                String company = cursor.getString(3);
+                String type = cursor.getString(4);
+                byte[] image = cursor.getBlob(5);
+                Bitmap bitmap = BitmapFactory.decodeByteArray(image,0,image.length);
+
+
+                models.add(new groceriesModel(id,name , amount , company , type, bitmap));
+            }while (cursor.moveToNext());
+        }
+        return models;
+    }
 
 }
 

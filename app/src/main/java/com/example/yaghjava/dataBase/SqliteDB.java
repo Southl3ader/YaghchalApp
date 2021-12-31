@@ -25,6 +25,7 @@ public class SqliteDB extends SQLiteOpenHelper {
     public static final String TYPE = "type";
     public static final String IMAGE = "image";
 
+    //Fridge
     public static final String TABLE_FRIDGE= "fridge";
     public static final String F_ID = "f_id";
     public static final String F_NAME = "f_name";
@@ -35,10 +36,13 @@ public class SqliteDB extends SQLiteOpenHelper {
     public static final String F_TYPE = "f_type";
     public static final String F_IMAGE = "f_image";
 
+    //Shopping list
     public static final String TABLE_SHOP= "shop";
     public static final String S_ID = "s_id";
     public static final String S_NAME = "s_name";
     public static final String S_AMOUNT = "s_amount";
+    public static final String S_COMPANY = "s_company";
+    public static final String S_TYPE = "s_type";
     public static final String S_IMAGE = "s_image";
 
 
@@ -80,6 +84,8 @@ public class SqliteDB extends SQLiteOpenHelper {
                 S_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 S_NAME + " TEXT NOT NULL , " +
                 S_AMOUNT + " INTEGER DEFAULT NULL , " +
+                S_COMPANY + " TEXT ," +
+                S_TYPE + " TEXT ," +
                 S_IMAGE + " BLOB )";
 
         sqLiteDatabase.execSQL(query2);
@@ -93,8 +99,7 @@ public class SqliteDB extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         String query = "DROP TABLE IF EXISTS " + TABLE_GROCERIES;
         sqLiteDatabase.execSQL(query);
-        String query1 = "DROP TABLE IF EXISTS " + TABLE_FRIDGE;
-        sqLiteDatabase.execSQL(query1);
+
 
         onCreate(sqLiteDatabase);
     }

@@ -30,6 +30,15 @@ public class groceriesModel {
         this.image = image;
     }
 
+    public groceriesModel(int ID, String name, int amount, String company, String type, Bitmap image) {
+        this.ID = ID;
+        this.name = name;
+        this.amount = amount;
+        this.company = company;
+        this.type = type;
+        this.image = image;
+    }
+
     public int getID() {
         return ID;
     }
