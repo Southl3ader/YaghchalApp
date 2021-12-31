@@ -52,6 +52,7 @@
             android:fontFamily="@font/vazir"
             android:inputType="number"
             android:textSize="20dp"
+            android:background="@drawable/frame"
             android:textColor="@color/MenuDeselect"
             android:layout_marginBottom="20dp"
             android:textAlignment="center"
