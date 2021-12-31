@@ -13,7 +13,7 @@ import java.util.Date;
 public class SqliteDB extends SQLiteOpenHelper {
 
     public static final String DB_NAME = "yaghchal.db";
-    public static final int DB_Version = 12;
+    public static final int DB_Version = 14;
 
     //g_table
     public static final String TABLE_GROCERIES = "groceries";
@@ -100,7 +100,8 @@ public class SqliteDB extends SQLiteOpenHelper {
         String query = "DROP TABLE IF EXISTS " + TABLE_GROCERIES;
         sqLiteDatabase.execSQL(query);
 
-
+        String query1 = "DROP TABLE IF EXISTS " + TABLE_SHOP;
+        sqLiteDatabase.execSQL(query1);
         onCreate(sqLiteDatabase);
     }
 }
