@@ -63,7 +63,65 @@ public class RecyclerViewSearchAdapter extends RecyclerView.Adapter<RecyclerView
         holder.addToShoppingList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                if(mType[position].equals("Dairy" ) || mType[position].equals("Protein") ) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(view.getRootView().getContext());
+                    View dialogview = LayoutInflater.from(view.getRootView().getContext()).inflate(R.layout.search_popup_cart, null);
+                    ImageView imageView = dialogview.findViewById(R.id.shop_image);
+                    imageView.setImageBitmap(pic[position]);
+                    TextView textview = dialogview.findViewById(R.id.shop_name);
+                    textview.setText(holder.myTextView.getText().toString());
+                    EditText amount = dialogview.findViewById(R.id.shop_amount);
+                    EditText company = dialogview.findViewById(R.id.shop_company);
+                    builder.setView(dialogview);
+                    builder.setCancelable(true);
+                    AlertDialog shopppop = builder.show();
+                    Button button = dialogview.findViewById(R.id.shop_add);
+                    button.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            if (TextUtils.isEmpty(amount.getText().toString())) {
+                                Toast.makeText(cnt.getApplicationContext(), "لطفا تعداد را تعیین کنید", Toast.LENGTH_SHORT).show();
+                            } else {
+                                String convert = amount.getText().toString();
+                                int amountToint = Integer.parseInt(convert);
+                                SearchActivity.access.openDB();
+                                SearchActivity.access.addToShop(textview.getText().toString(), amountToint, company.getText().toString());
+                                Toast.makeText(cnt.getApplicationContext(), "به لیست خرید اضافه شد", Toast.LENGTH_SHORT).show();
+                                SearchActivity.access.closeDB();
+                                shopppop.cancel();
+                            }
+                        }
+                    });
+                }
+                else{
+                    AlertDialog.Builder builder = new AlertDialog.Builder(view.getRootView().getContext());
+                    View dialogview = LayoutInflater.from(view.getRootView().getContext()).inflate(R.layout.search_popup_cart_nocompany, null);
+                    ImageView imageView = dialogview.findViewById(R.id.shop_image);
+                    imageView.setImageBitmap(pic[position]);
+                    TextView textview = dialogview.findViewById(R.id.shop_name);
+                    textview.setText(holder.myTextView.getText().toString());
+                    EditText amount = dialogview.findViewById(R.id.shop_amount);
+                    builder.setView(dialogview);
+                    builder.setCancelable(true);
+                    AlertDialog shopppop = builder.show();
+                    Button button = dialogview.findViewById(R.id.shop_add);
+                    button.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            if (TextUtils.isEmpty(amount.getText().toString())) {
+                                Toast.makeText(cnt.getApplicationContext(), "لطفا تعداد را تعیین کنید", Toast.LENGTH_SHORT).show();
+                            } else {
+                                String convert = amount.getText().toString();
+                                int amountToint = Integer.parseInt(convert);
+                                SearchActivity.access.openDB();
+                                SearchActivity.access.addToShop(textview.getText().toString(), amountToint, null);
+                                Toast.makeText(cnt.getApplicationContext(), "به لیست خرید اضافه شد", Toast.LENGTH_SHORT).show();
+                                SearchActivity.access.closeDB();
+                                shopppop.cancel();
+                            }
+                        }
+                    });
+                }
             }
         });
         holder.addToFridge.setOnClickListener(new View.OnClickListener() {

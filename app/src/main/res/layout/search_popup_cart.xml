@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="300dp"
+    android:layout_height="370dp"
+    tools:context=".PopupCompanyActivity"
+    android:orientation="vertical"
+    android:textDirection="rtl"
+    android:layoutDirection="rtl"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:padding="20dp"
+    android:backgroundTint="#b4f4fb"
+    android:background="@drawable/roundwindow">
+
+    <ImageView
+        android:id="@+id/shop_image"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:id="@+id/shop_name"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:fontFamily="@font/vazir_bold"
+        android:textSize="20dp"
+        android:layout_marginBottom="20dp"
+        android:textAlignment="center"/>
+
+    <EditText
+        android:id="@+id/shop_amount"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:fontFamily="@font/vazir"
+        android:inputType="number"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/frame"
+        android:hint="مقدار"
+        android:textAlignment="center"/>
+
+    <EditText
+        android:id="@+id/shop_company"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:fontFamily="@font/vazir"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/frame"
+        android:hint="شرکت"
+        android:textAlignment="center"/>
+
+    <Button
+        android:id="@+id/shop_add"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:fontFamily="@font/vazir"
+        android:text="اضافه کردن به لیست خرید"
+        android:backgroundTint="#72ABE8"/>
+
+
+</LinearLayout>
