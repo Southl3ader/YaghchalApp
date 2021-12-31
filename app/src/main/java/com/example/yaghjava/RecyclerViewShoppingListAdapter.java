@@ -26,21 +26,21 @@ public class RecyclerViewShoppingListAdapter extends RecyclerView.Adapter<Recycl
     private String[] mType;
     private String[] BDate;
     private String[] EDate;
-    private String[] company;
+    private String[] mCompany;
     private ItemClickListener mClickListener;
     Context cnt;
     Bitmap[] pic;
-    private String[] itemcount;
+    private String[] mAmount;
     String S = "0";
 
     // data is passed into the constructor
     RecyclerViewShoppingListAdapter(Context context, int[] ID ,String[] data, String[] company, Bitmap[] pic, String[] ItemAmount, String[] type) {
         this.mID = ID;
         this.mData = data;
-        this.company = company;
+        this.mCompany = company;
         this.cnt = context;
         this.pic = pic;
-        this.itemcount = ItemAmount;
+        this.mAmount = ItemAmount;
         this.mType = type;
     }
 
@@ -55,9 +55,8 @@ public class RecyclerViewShoppingListAdapter extends RecyclerView.Adapter<Recycl
 
     // binds the data to the TextView in each cell
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder,  int position) {
         holder.myTextView.setText(mData[position].toString());
-        holder.ItemCountText.setText(itemcount[position].toString());
         holder.imageView.setImageBitmap(pic[position]);
 
         holder.buy.setOnClickListener(new View.OnClickListener() {
@@ -71,6 +70,7 @@ public class RecyclerViewShoppingListAdapter extends RecyclerView.Adapter<Recycl
                     TextView textView =  dialogview.findViewById(R.id.c_name);
                     textView.setText(holder.myTextView.getText().toString());
                     EditText amount = dialogview.findViewById(R.id.c_amount);
+                    amount.setText(mAmount[position]);
                     EditText bdate = dialogview.findViewById(R.id.c_bdate);
                     EditText edate = dialogview.findViewById(R.id.c_edate);
                     EditText company = dialogview.findViewById(R.id.c_company);
@@ -87,11 +87,12 @@ public class RecyclerViewShoppingListAdapter extends RecyclerView.Adapter<Recycl
                             else {
                                 String S = amount.getText().toString();
                                 int a =Integer.parseInt(S);
-                                SearchActivity.access.openDB();
-                                SearchActivity.access.addToFridge2(textView.getText().toString(),a ,bdate.getText().toString(),edate.getText().toString(),company.getText().toString());
-                                SearchActivity.access.closeDB();
+                                ShoppingListActivity.access.openDB();
+                                ShoppingListActivity.access.shopToFridge(mID[position],mData[position],a,bdate.getText().toString(),edate.getText().toString(),mCompany[position]);
+                                ShoppingListActivity.access.closeDB();
                                 Toast.makeText(cnt.getApplicationContext(), textView.getText().toString() + " به یخچال شما اضافه شد", Toast.LENGTH_SHORT).show();
                                 ad.cancel();
+                                ((ShoppingListActivity)cnt).onResume();
                             }
                         }
                     });
@@ -104,6 +105,7 @@ public class RecyclerViewShoppingListAdapter extends RecyclerView.Adapter<Recycl
                     TextView textView =  dialogview.findViewById(R.id.n_name);
                     textView.setText(holder.myTextView.getText().toString());
                     EditText amount = dialogview.findViewById(R.id.n_amount);
+                    amount.setText(mAmount[position]);
                     EditText bdate = dialogview.findViewById(R.id.n_bdate);
                     EditText edate = dialogview.findViewById(R.id.n_edate);
                     Button button = dialogview.findViewById(R.id.n_add);
@@ -120,12 +122,13 @@ public class RecyclerViewShoppingListAdapter extends RecyclerView.Adapter<Recycl
                             else {
                                 S = amount.getText().toString();
                                 int a =Integer.parseInt(S);
-                                SearchActivity.access.openDB();
-                                SearchActivity.access.shopToFridge(mID[position],mData[position],a,bdate.getText().toString(),edate.getText().toString(),company[position]);
+                                ShoppingListActivity.access.openDB();
+                                ShoppingListActivity.access.shopToFridge(mID[position],mData[position],a,bdate.getText().toString(),edate.getText().toString(),mCompany[position]);
                                 System.out.println(mID[position]);
-                                SearchActivity.access.closeDB();
+                                ShoppingListActivity.access.closeDB();
                                 Toast.makeText(cnt.getApplicationContext(), textView.getText().toString() + " به یخچال شما اضافه شد", Toast.LENGTH_SHORT).show();
                                 ad.cancel();
+                                ((ShoppingListActivity)cnt).onResume();
                             }
 
                         }
@@ -135,22 +138,22 @@ public class RecyclerViewShoppingListAdapter extends RecyclerView.Adapter<Recycl
             }
         });
 
-//        holder.remove.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                FridgeActivity.access.openDB();
-//                FridgeActivity.access.remove(mID[position]);
-//                FridgeActivity.access.closeDB();
-//                Toast.makeText(cnt.getApplicationContext(), mData[position] + " از لیست خرید شما حذف شد", Toast.LENGTH_SHORT).show();
-//                ((FridgeActivity)cnt).onResume();
-//            }
-//        });
+        holder.remove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ShoppingListActivity.access.openDB();
+                ShoppingListActivity.access.removeShop(mID[position]);
+                ShoppingListActivity.access.closeDB();
+                Toast.makeText(cnt.getApplicationContext(), mData[position] + " از لیست خرید شما حذف شد", Toast.LENGTH_SHORT).show();
+                ((ShoppingListActivity)cnt).onResume();
+            }
+        });
 
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //For Items With Company
-                if (mType.equals("Dairy") || mType.equals("Protein")) {
+                if (mType[position].equals("Dairy") || mType[position].equals("Protein")) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(view.getRootView().getContext());
                     View dialogview = LayoutInflater.from(view.getRootView().getContext()).inflate(R.layout.shoppinglist_details, null);
                     ImageView imageView = dialogview.findViewById(R.id.sh_c_image);
@@ -161,11 +164,11 @@ public class RecyclerViewShoppingListAdapter extends RecyclerView.Adapter<Recycl
                     amount.setText(holder.ItemCountText.getText());
                     amount.setEnabled(false);
                     EditText companytext = dialogview.findViewById(R.id.sh_c_company);
-                    companytext.setText(company[position]);
+                    companytext.setText(mCompany[position]);
                     companytext.setEnabled(false);
                     builder.setView(dialogview);
                     builder.setCancelable(true);
-                    AlertDialog shoppinglistdialog = builder.show();
+                    builder.show();
                 }
                 //For Items Without Company
                 else{
@@ -173,14 +176,14 @@ public class RecyclerViewShoppingListAdapter extends RecyclerView.Adapter<Recycl
                     View dialogview = LayoutInflater.from(view.getRootView().getContext()).inflate(R.layout.shoppinglist_details_no_company, null);
                     ImageView imageView = dialogview.findViewById(R.id.sh_n_image);
                     imageView.setImageBitmap(pic[position]);
-                    TextView textView = dialogview.findViewById(R.id.shop_name);
-                    textView.setText(holder.myTextView.getText().toString());
-                    EditText amount = dialogview.findViewById(R.id.sh_n_amount);
-                    amount.setText(holder.ItemCountText.getText());
+                    TextView textView = dialogview.findViewById(R.id.sh_n_name);
+                    textView.setText(mData[position]);
+                    TextView amount = dialogview.findViewById(R.id.sh_n_amount);
+                    amount.setText(mAmount[position]);
                     amount.setEnabled(false);
                     builder.setView(dialogview);
                     builder.setCancelable(true);
-                    AlertDialog shoppinglistdialog = builder.show();
+                    builder.show();
                 }
 
             }
@@ -198,16 +201,19 @@ public class RecyclerViewShoppingListAdapter extends RecyclerView.Adapter<Recycl
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView myTextView;
+        TextView noCompanyD;
         TextView ItemCountText;
         ImageView imageView;
+        ImageView noCompanyImage;
         ImageButton buy;
         ImageButton remove;
         LinearLayout linearLayout;
         ViewHolder(View itemView) {
             super(itemView);
-            myTextView = itemView.findViewById(R.id.groceries);
-            ItemCountText = itemView.findViewById(R.id.groceries_count);
-            imageView = itemView.findViewById(R.id.img);
+            myTextView = itemView.findViewById(R.id.sh_name);
+            imageView = itemView.findViewById(R.id.sh_image);
+            noCompanyD = itemView.findViewById(R.id.sh_n_name);
+            noCompanyImage = itemView.findViewById(R.id.sh_n_image);
             linearLayout = itemView.findViewById(R.id.selective_shoppinglist);
             buy = itemView.findViewById(R.id.buy);
             remove = itemView.findViewById(R.id.remove);

@@ -382,6 +382,14 @@ public List<groceriesModel> getAllFruits(){
 
     }
 
+    //Delete item from shopping list
+    public void removeShop(int id){
+        String query ="DELETE FROM " + SqliteDB.TABLE_SHOP
+                + " WHERE " + SqliteDB.S_ID + " = " + id;
+
+        database.execSQL(query);
+    }
+
     //Get all groceries in shopping list
     public List<groceriesModel> getAllShop(){
 
