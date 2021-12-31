@@ -145,20 +145,6 @@
 
     </LinearLayout>
 
-<!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
-<!--        android:id="@+id/bottomnavigation"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="75dp"-->
-<!--        android:layout_gravity="bottom"-->
-<!--        android:layout_marginBottom="0dp"-->
-<!--        android:layout_marginStart="0dp"-->
-<!--        android:fitsSystemWindows="true"-->
-<!--        android:background="@drawable/roundmenu"-->
-<!--        app:itemIconTint="@color/menuiconcolor"-->
-<!--        app:itemTextColor="@color/menuiconcolor"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:menu="@menu/bottommenu"/>-->
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="78dp"

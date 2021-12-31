@@ -1,5 +1,6 @@
 package com.example.yaghjava;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.view.LayoutInflater;
@@ -53,7 +54,7 @@ public class RecyclerViewItemsAdapter extends RecyclerView.Adapter<RecyclerViewI
 
     // binds the data to the TextView in each cell
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.myTextView.setText(mData[position].toString());
         holder.ItemCountText.setText(itemcount[position].toString());
         holder.imageView.setImageBitmap(pic[position]);

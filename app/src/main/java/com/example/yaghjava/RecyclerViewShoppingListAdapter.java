@@ -1,9 +1,7 @@
 package com.example.yaghjava;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -21,29 +19,29 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.yaghjava.dataBase.groceriesDA;
+public class RecyclerViewShoppingListAdapter extends RecyclerView.Adapter<RecyclerViewShoppingListAdapter.ViewHolder> {
 
-public class RecyclerViewSearchAdapter extends RecyclerView.Adapter<RecyclerViewSearchAdapter.ViewHolder> {
-
+    private int[] mID;
     private String[] mData;
     private String[] mType;
-    private int[] mID;
+    private String[] BDate;
+    private String[] EDate;
+    private String[] company;
     private ItemClickListener mClickListener;
     Context cnt;
-    private Bitmap[] pic;
+    Bitmap[] pic;
+    private String[] itemcount;
     String S = "0";
-    //PopupCompanyActivity popupCompanyActivity = new PopupCompanyActivity();
-//    groceriesDA access;
-
 
     // data is passed into the constructor
-    RecyclerViewSearchAdapter(Context context,int[] id, String[] search, Bitmap[] pic, String[] type) {
-        this.mID = id;
+    RecyclerViewShoppingListAdapter(Context context, int[] ID ,String[] data, String[] company, Bitmap[] pic, String[] ItemAmount, String[] type) {
+        this.mID = ID;
+        this.mData = data;
+        this.company = company;
         this.cnt = context;
-        this.mData = search;
         this.pic = pic;
+        this.itemcount = ItemAmount;
         this.mType = type;
-//        access = new groceriesDA(SearchActivity.activity);
     }
 
     // inflates the cell layout from xml when needed
@@ -51,81 +49,18 @@ public class RecyclerViewSearchAdapter extends RecyclerView.Adapter<RecyclerView
     @NonNull
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         cnt = parent.getContext();
-        View search = LayoutInflater.from(cnt).inflate(R.layout.recyclerview_search, parent, false);
-        return new ViewHolder(search);
-
+        View view= LayoutInflater.from(cnt).inflate(R.layout.recycler_view_shoppinglist,parent,false);
+        return new ViewHolder(view);
     }
 
     // binds the data to the TextView in each cell
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.myTextView.setText(mData[position].toString());
-//        holder.imageView.setImageBitmap(pic[position]);
-        holder.addToShoppingList.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(mType[position].equals("Dairy" ) || mType[position].equals("Protein") ) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(view.getRootView().getContext());
-                    View dialogview = LayoutInflater.from(view.getRootView().getContext()).inflate(R.layout.search_popup_cart, null);
-                    ImageView imageView = dialogview.findViewById(R.id.shop_image);
-                    imageView.setImageBitmap(pic[position]);
-                    TextView textview = dialogview.findViewById(R.id.shop_name);
-                    textview.setText(holder.myTextView.getText().toString());
-                    EditText amount = dialogview.findViewById(R.id.shop_amount);
-                    EditText company = dialogview.findViewById(R.id.shop_company);
-                    builder.setView(dialogview);
-                    builder.setCancelable(true);
-                    AlertDialog shopppop = builder.show();
-                    Button button = dialogview.findViewById(R.id.shop_add);
-                    button.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            if (TextUtils.isEmpty(amount.getText().toString())) {
-                                Toast.makeText(cnt.getApplicationContext(), "لطفا تعداد را تعیین کنید", Toast.LENGTH_SHORT).show();
-                            } else {
-                                String convert = amount.getText().toString();
-                                int amountToint = Integer.parseInt(convert);
-                                SearchActivity.access.openDB();
-                                SearchActivity.access.addToShop(textview.getText().toString(), amountToint, company.getText().toString());
-                                Toast.makeText(cnt.getApplicationContext(), "به لیست خرید اضافه شد", Toast.LENGTH_SHORT).show();
-                                SearchActivity.access.closeDB();
-                                shopppop.cancel();
-                            }
-                        }
-                    });
-                }
-                else{
-                    AlertDialog.Builder builder = new AlertDialog.Builder(view.getRootView().getContext());
-                    View dialogview = LayoutInflater.from(view.getRootView().getContext()).inflate(R.layout.search_popup_cart_nocompany, null);
-                    ImageView imageView = dialogview.findViewById(R.id.shop_image);
-                    imageView.setImageBitmap(pic[position]);
-                    TextView textview = dialogview.findViewById(R.id.shop_name);
-                    textview.setText(holder.myTextView.getText().toString());
-                    EditText amount = dialogview.findViewById(R.id.shop_amount);
-                    builder.setView(dialogview);
-                    builder.setCancelable(true);
-                    AlertDialog shopppop = builder.show();
-                    Button button = dialogview.findViewById(R.id.shop_add);
-                    button.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            if (TextUtils.isEmpty(amount.getText().toString())) {
-                                Toast.makeText(cnt.getApplicationContext(), "لطفا تعداد را تعیین کنید", Toast.LENGTH_SHORT).show();
-                            } else {
-                                String convert = amount.getText().toString();
-                                int amountToint = Integer.parseInt(convert);
-                                SearchActivity.access.openDB();
-                                SearchActivity.access.addToShop(textview.getText().toString(), amountToint, null);
-                                Toast.makeText(cnt.getApplicationContext(), "به لیست خرید اضافه شد", Toast.LENGTH_SHORT).show();
-                                SearchActivity.access.closeDB();
-                                shopppop.cancel();
-                            }
-                        }
-                    });
-                }
-            }
-        });
-        holder.addToFridge.setOnClickListener(new View.OnClickListener() {
+        holder.ItemCountText.setText(itemcount[position].toString());
+        holder.imageView.setImageBitmap(pic[position]);
+
+        holder.buy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(mType[position].equals("Dairy" ) || mType[position].equals("Protein") ){
@@ -186,7 +121,7 @@ public class RecyclerViewSearchAdapter extends RecyclerView.Adapter<RecyclerView
                                 S = amount.getText().toString();
                                 int a =Integer.parseInt(S);
                                 SearchActivity.access.openDB();
-                                SearchActivity.access.addToFridge2(textView.getText().toString(),a ,bdate.getText().toString(),edate.getText().toString(),null);
+                                SearchActivity.access.shopToFridge(mID[position],mData[position],a,bdate.getText().toString(),edate.getText().toString(),company[position]);
                                 System.out.println(mID[position]);
                                 SearchActivity.access.closeDB();
                                 Toast.makeText(cnt.getApplicationContext(), textView.getText().toString() + " به یخچال شما اضافه شد", Toast.LENGTH_SHORT).show();
@@ -197,13 +132,61 @@ public class RecyclerViewSearchAdapter extends RecyclerView.Adapter<RecyclerView
                     });
 
                 }
+            }
+        });
 
+//        holder.remove.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                FridgeActivity.access.openDB();
+//                FridgeActivity.access.remove(mID[position]);
+//                FridgeActivity.access.closeDB();
+//                Toast.makeText(cnt.getApplicationContext(), mData[position] + " از لیست خرید شما حذف شد", Toast.LENGTH_SHORT).show();
+//                ((FridgeActivity)cnt).onResume();
+//            }
+//        });
+
+        holder.linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //For Items With Company
+                if (mType.equals("Dairy") || mType.equals("Protein")) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(view.getRootView().getContext());
+                    View dialogview = LayoutInflater.from(view.getRootView().getContext()).inflate(R.layout.shoppinglist_details, null);
+                    ImageView imageView = dialogview.findViewById(R.id.sh_c_image);
+                    imageView.setImageBitmap(pic[position]);
+                    TextView textView = dialogview.findViewById(R.id.sh_c_name);
+                    textView.setText(holder.myTextView.getText().toString());
+                    EditText amount = dialogview.findViewById(R.id.sh_c_amount);
+                    amount.setText(holder.ItemCountText.getText());
+                    amount.setEnabled(false);
+                    EditText companytext = dialogview.findViewById(R.id.sh_c_company);
+                    companytext.setText(company[position]);
+                    companytext.setEnabled(false);
+                    builder.setView(dialogview);
+                    builder.setCancelable(true);
+                    AlertDialog shoppinglistdialog = builder.show();
+                }
+                //For Items Without Company
+                else{
+                    AlertDialog.Builder builder = new AlertDialog.Builder(view.getRootView().getContext());
+                    View dialogview = LayoutInflater.from(view.getRootView().getContext()).inflate(R.layout.shoppinglist_details_no_company, null);
+                    ImageView imageView = dialogview.findViewById(R.id.sh_n_image);
+                    imageView.setImageBitmap(pic[position]);
+                    TextView textView = dialogview.findViewById(R.id.shop_name);
+                    textView.setText(holder.myTextView.getText().toString());
+                    EditText amount = dialogview.findViewById(R.id.sh_n_amount);
+                    amount.setText(holder.ItemCountText.getText());
+                    amount.setEnabled(false);
+                    builder.setView(dialogview);
+                    builder.setCancelable(true);
+                    AlertDialog shoppinglistdialog = builder.show();
+                }
 
             }
         });
+
     }
-
-
 
     // total number of cells
     @Override
@@ -215,22 +198,26 @@ public class RecyclerViewSearchAdapter extends RecyclerView.Adapter<RecyclerView
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView myTextView;
+        TextView ItemCountText;
+        ImageView imageView;
+        ImageButton buy;
+        ImageButton remove;
         LinearLayout linearLayout;
-        ImageButton addToFridge;
-        ImageButton addToShoppingList;
-
         ViewHolder(View itemView) {
             super(itemView);
-            myTextView = itemView.findViewById(R.id.searchItems);
-            linearLayout = itemView.findViewById(R.id.selective_search);
-            addToFridge = itemView.findViewById(R.id.addToFridge);
-            addToShoppingList = itemView.findViewById(R.id.addToShoppinglist);
+            myTextView = itemView.findViewById(R.id.groceries);
+            ItemCountText = itemView.findViewById(R.id.groceries_count);
+            imageView = itemView.findViewById(R.id.img);
+            linearLayout = itemView.findViewById(R.id.selective_shoppinglist);
+            buy = itemView.findViewById(R.id.buy);
+            remove = itemView.findViewById(R.id.remove);
             itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
             if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
+
         }
     }
 
@@ -244,14 +231,8 @@ public class RecyclerViewSearchAdapter extends RecyclerView.Adapter<RecyclerView
         this.mClickListener = itemClickListener;
     }
 
-
     // parent activity will implement this method to respond to click events
     public interface ItemClickListener {
         void onItemClick(View view, int position);
     }
-
-//    public void filter(String[] s){
-//        mData = s;
-//        notifyDataSetChanged();
-//    }
 }

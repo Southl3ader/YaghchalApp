@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".RecyclerViewShoppingListAdapter"
+    android:id="@+id/selective_shoppinglist"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="10dp"
+    android:layoutDirection="rtl"
+    android:textDirection="rtl"
+    android:layout_marginRight="10dp"
+    android:layout_marginLeft="10dp"
+    android:background="@drawable/frame"
+    android:clickable="true"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp">
+
+    <ImageView
+        android:id="@+id/sh_image"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="10dp"/>
+
+    <TextView
+        android:id="@+id/sh_name"
+        android:layout_width="wrap_content"
+        android:fontFamily="@font/vazir"
+        android:layout_height="wrap_content"
+        android:textAlignment="textStart"
+        android:padding="10dp"
+        android:layout_weight="1"
+        android:textColor="#000"
+        android:layout_marginLeft="10dp"/>
+
+    <ImageButton
+        android:id="@+id/buy"
+        android:layout_width="20dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="20dp"
+        android:background="@drawable/ic_fridge"
+        android:backgroundTint="@color/MenuSelect"/>
+
+    <ImageButton
+        android:id="@+id/remove"
+        android:layout_width="35dp"
+        android:layout_height="40dp"
+        android:background="@drawable/ic_trash"
+        android:backgroundTint="@color/MenuSelect"/>
+
+</LinearLayout>
