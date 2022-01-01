@@ -51,7 +51,6 @@
 
         </ScrollView>
 
-
     </LinearLayout>
 
     <LinearLayout
@@ -65,24 +64,23 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
 
-
         <Button
-            android:id="@+id/settings"
-
+            android:id="@+id/fridge"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal|end"
             android:layout_weight="1"
             android:backgroundTint="#A1A1A1"
-            android:drawableTop="@drawable/ic_settings_unselect"
+            android:drawableTop="@drawable/ic_fridge_unselect"
             android:drawableTint="@color/MenuDeselect"
+            android:hapticFeedbackEnabled="false"
             android:padding="5dp"
             android:fontFamily="@font/vazir"
-            android:text="تنظیمات"
-            android:textSize="11.5dp"
+            android:text="یقچال"
+            android:textAlignment="center"
             android:textAllCaps="false"
             android:textColor="@color/MenuDeselect"
+            android:textSize="11.5dp"
             app:cornerRadius="15dp"></Button>
 
         <Button
@@ -106,22 +104,22 @@
             app:cornerRadius="15dp"></Button>
 
         <Button
-            android:id="@+id/fridge"
+            android:id="@+id/settings"
+
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal|end"
             android:layout_weight="1"
             android:backgroundTint="#A1A1A1"
-            android:drawableTop="@drawable/ic_fridge_unselect"
+            android:drawableTop="@drawable/ic_settings_unselect"
             android:drawableTint="@color/MenuDeselect"
-            android:hapticFeedbackEnabled="false"
             android:padding="5dp"
             android:fontFamily="@font/vazir"
-            android:text="یقچال"
-            android:textAlignment="center"
+            android:text="تنظیمات"
+            android:textSize="11.5dp"
             android:textAllCaps="false"
             android:textColor="@color/MenuDeselect"
-            android:textSize="11.5dp"
             app:cornerRadius="15dp"></Button>
 
 
