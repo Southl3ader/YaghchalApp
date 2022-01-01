@@ -64,7 +64,7 @@ public class RecyclerViewSearchAdapter extends RecyclerView.Adapter<RecyclerView
         holder.addToShoppingList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(mType[position].equals("Dairy" ) || mType[position].equals("Protein") ) {
+                if(mType[position].equals("Dairy" ) || mType[position].equals("Protein") || mType[position].equals("Others")) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(view.getRootView().getContext());
                     View dialogview = LayoutInflater.from(view.getRootView().getContext()).inflate(R.layout.search_popup_cart, null);
                     ImageView imageView = dialogview.findViewById(R.id.shop_image);
@@ -128,7 +128,7 @@ public class RecyclerViewSearchAdapter extends RecyclerView.Adapter<RecyclerView
         holder.addToFridge.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(mType[position].equals("Dairy" ) || mType[position].equals("Protein") ){
+                if(mType[position].equals("Dairy" ) || mType[position].equals("Protein") || mType[position].equals("Others")){
                     AlertDialog.Builder builder = new AlertDialog.Builder(view.getRootView().getContext());
                     View dialogview = LayoutInflater.from(view.getRootView().getContext()).inflate(R.layout.popup_company,null);
                     ImageView imageView = dialogview.findViewById(R.id.c_image);

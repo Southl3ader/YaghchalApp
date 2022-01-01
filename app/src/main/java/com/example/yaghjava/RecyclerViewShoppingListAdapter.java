@@ -55,14 +55,14 @@ public class RecyclerViewShoppingListAdapter extends RecyclerView.Adapter<Recycl
 
     // binds the data to the TextView in each cell
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder,  int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.myTextView.setText(mData[position].toString());
         holder.imageView.setImageBitmap(pic[position]);
 
         holder.buy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(mType[position].equals("Dairy" ) || mType[position].equals("Protein") ){
+                if(mType[position].equals("Dairy" ) || mType[position].equals("Protein") || mType[position].equals("Others")){
                     AlertDialog.Builder builder = new AlertDialog.Builder(view.getRootView().getContext());
                     View dialogview = LayoutInflater.from(view.getRootView().getContext()).inflate(R.layout.popup_company,null);
                     ImageView imageView = dialogview.findViewById(R.id.c_image);
@@ -74,6 +74,7 @@ public class RecyclerViewShoppingListAdapter extends RecyclerView.Adapter<Recycl
                     EditText bdate = dialogview.findViewById(R.id.c_bdate);
                     EditText edate = dialogview.findViewById(R.id.c_edate);
                     EditText company = dialogview.findViewById(R.id.c_company);
+                    company.setText(mCompany[position]);
                     Button button = dialogview.findViewById(R.id.c_add);
                     builder.setView(dialogview);
                     builder.setCancelable(true);
@@ -153,17 +154,17 @@ public class RecyclerViewShoppingListAdapter extends RecyclerView.Adapter<Recycl
             @Override
             public void onClick(View view) {
                 //For Items With Company
-                if (mType[position].equals("Dairy") || mType[position].equals("Protein")) {
+                if (mType[position].equals("Dairy") || mType[position].equals("Protein") || mType[position].equals("Others")) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(view.getRootView().getContext());
                     View dialogview = LayoutInflater.from(view.getRootView().getContext()).inflate(R.layout.shoppinglist_details, null);
                     ImageView imageView = dialogview.findViewById(R.id.sh_c_image);
                     imageView.setImageBitmap(pic[position]);
                     TextView textView = dialogview.findViewById(R.id.sh_c_name);
                     textView.setText(holder.myTextView.getText().toString());
-                    EditText amount = dialogview.findViewById(R.id.sh_c_amount);
-                    amount.setText(holder.ItemCountText.getText());
+                    TextView amount = dialogview.findViewById(R.id.sh_c_amount);
+                    amount.setText(mAmount[position]);
                     amount.setEnabled(false);
-                    EditText companytext = dialogview.findViewById(R.id.sh_c_company);
+                    TextView companytext = dialogview.findViewById(R.id.sh_c_company);
                     companytext.setText(mCompany[position]);
                     companytext.setEnabled(false);
                     builder.setView(dialogview);

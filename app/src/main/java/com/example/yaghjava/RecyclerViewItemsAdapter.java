@@ -83,7 +83,7 @@ public class RecyclerViewItemsAdapter extends RecyclerView.Adapter<RecyclerViewI
             @Override
             public void onClick(View view) {
                 //For Items With Company
-                if (mType.equals("Dairy") || mType.equals("Protein")) {
+                if (mType.equals("Dairy") || mType.equals("Protein") || mType.equals("Others")) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(view.getRootView().getContext());
                     View dialogview = LayoutInflater.from(view.getRootView().getContext()).inflate(R.layout.details_popup, null);
                     ImageView imageView = dialogview.findViewById(R.id.fridgepop_image);
