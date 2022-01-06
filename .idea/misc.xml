@@ -65,6 +65,8 @@
         <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/drawable/ic_clipboard.xml" value="0.15" />
         <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/drawable/ic_clipboard_unselect.xml" value="0.15" />
         <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/drawable/ic_fridge_unselect.xml" value="0.2611111111111111" />
+        <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/drawable/ic_info.xml" value="0.178125" />
+        <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/drawable/ic_info_unselect.xml" value="0.178125" />
         <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/drawable/ic_recipe-unselect.xml" value="0.2611111111111111" />
         <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/drawable/ic_recipe.xml" value="0.15" />
         <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/drawable/ic_search.xml" value="0.15" />
@@ -75,19 +77,25 @@
         <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/drawable/ic_stove.xml" value="0.15" />
         <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/drawable/item_count_background.xml" value="0.2712820512820513" />
         <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/drawable/roundmenu.xml" value="0.2712820512820513" />
+        <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/layout/activity_delete_items.xml" value="0.10914855072463768" />
         <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/layout/activity_fridge.xml" value="0.2994791666666667" />
         <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/layout/activity_main.xml" value="0.13020833333333334" />
+        <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/layout/details_popup.xml" value="0.10914855072463768" />
+        <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/layout/details_popup_company.xml" value="0.16197916666666667" />
         <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/layout/popup_company.xml" value="0.2545289855072464" />
         <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/layout/popup_no_company.xml" value="0.2545289855072464" />
         <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/layout/recipe_activity.xml" value="0.23369565217391305" />
+        <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/layout/recycler_view_shoppinglist.xml" value="0.16197916666666667" />
         <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/layout/recyclerview_items.xml" value="0.4" />
         <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/layout/recyclerview_search.xml" value="0.4" />
         <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/layout/search.xml" value="0.2210144927536232" />
         <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/layout/search_activity.xml" value="0.23369565217391305" />
         <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/layout/search_popup_cart.xml" value="0.264" />
         <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/layout/search_popup_cart_nocompany.xml" value="0.15885416666666666" />
-        <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/layout/settings_activity.xml" value="0.23369565217391305" />
-        <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/layout/shoppinglist_activity.xml" value="0.12613981762917933" />
+        <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/layout/settings_activity.xml" value="0.2" />
+        <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/layout/shoppinglist_activity.xml" value="0.536" />
+        <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/layout/shoppinglist_details.xml" value="0.16197916666666667" />
+        <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/layout/shoppinglist_details_no_company.xml" value="0.16197916666666667" />
         <entry key="..\:/Data/PGU/Mobile/YaghchalApp/app/src/main/res/layout/white_circle_drawable.xml" value="0.2504528985507246" />
         <entry key="..\:/Data/PGU/YaghChal/YaghJava/app/src/main/res/drawable/ic_recipe.xml" value="0.2755208333333333" />
         <entry key="..\:/Data/PGU/YaghChal/YaghJava/app/src/main/res/drawable/roundmenu.xml" value="0.26145833333333335" />
